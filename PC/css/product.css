@@ -1,0 +1,27 @@
+.banner-sub-page{
+    background: url(../img/bg-slider-bottom.png) 100% 100% repeat-x #f0f0f0;
+}
+.banner-sub-page .content{
+ padding: 0 0 11px;
+}
+.main{}
+.main .wrapper{}
+.main .wrapper .main-menu{
+    float: left;
+    width: 30%;
+}
+.main .wrapper .main-content{
+    float: right;
+    width: 70%;
+}
+.main .main-menu h3{
+    padding: 0 0 15px 0;
+    font-size: 20px;
+    color: #104A7C;
+}
+.main .main-menu .item{
+    display: block;
+    padding: 6px 0 6px 20px;
+    border-bottom: 1px dotted #d0d0d0;
+    color: #888;
+}
