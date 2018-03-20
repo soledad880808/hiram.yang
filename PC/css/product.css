@@ -18,10 +18,67 @@
     padding: 0 0 15px 0;
     font-size: 20px;
     color: #104A7C;
+    margin-right: 80px;
+}
+.main .main-menu ul{
+    margin-right: 80px;
 }
 .main .main-menu .item{
     display: block;
     padding: 6px 0 6px 20px;
     border-bottom: 1px dotted #d0d0d0;
     color: #888;
+    background: url(http://www.lase.de/templates/lase/images/arrow3.png) 0 -19px no-repeat;
+}
+.main .main-content .product-header{
+    display: flex;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #ddd;
+}
+.main .main-content .product-header .left{
+    width: 50%;
+}
+.main .main-content .product-header .left h1{
+    font-size: 20px;
+}
+.main .main-content .product-header .left img{
+    width: 100%;
+    height: 230px;
+}
+.main .main-content .product-header .right{
+    width: 50%;
+}
+.main .main-content .product-header .right .introduction-box{
+    background-color: #f7f5f5;
+    padding: 20px;
+    height: 220px;
+}
+.main .main-content .product-header .right .introduction-box p{
+    font-size: 18px;
+}
+.main .main-content .product-header .right .introduction-box li{
+    line-height: 40px;
+}
+.main .main-content .product-details{
+    padding-top: 20px;
+}
+.main .main-content .product-details .left-menu{
+    width: 160px;
+    float:left;
+}
+.main .main-content .product-details .left-menu li{
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border:1px solid #ddd;
+    border-bottom: 0;
+}
+.main .main-content .product-details .left-menu li:last-child{
+    border-bottom: 1px solid #ddd;
+}
+
+.main .main-content .product-details .right-details{
+    float:right;
+    width: 500px;
 }
