@@ -21,7 +21,7 @@
     margin-right: 80px;
 }
 .main .main-menu ul{
-    margin-right: 80px;
+    margin-right: 60px;
 }
 .main .main-menu .item{
     display: block;
@@ -73,6 +73,15 @@
     text-align: center;
     border:1px solid #ddd;
     border-bottom: 0;
+    cursor: pointer;
+}
+.main .main-content .product-details .left-menu .active{
+    background-color: #104A7C;
+    color: white;
+}
+.main .main-content .product-details .left-menu li:hover{
+    background-color: #104A7C;
+    color: white;
 }
 .main .main-content .product-details .left-menu li:last-child{
     border-bottom: 1px solid #ddd;
