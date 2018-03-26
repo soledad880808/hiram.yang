@@ -70,8 +70,10 @@ iframe {
     margin: 0 auto;
 }
 .header {
-    border-bottom: 6px solid #d8d8d8;
-    
+    border-bottom: 6px solid #d8d8d8;   
+}
+.header .wrapper{
+    position: relative;
 }
 .header .nav {
     position: relative;
@@ -120,7 +122,25 @@ iframe {
 .header .nav li a:hover {
     color: #104A7C;
 }
-
+.header .mod-languages{
+    border: 1px solid #F1F1F1;
+    left: 910px;
+    padding: 5px;
+    position: absolute;
+    text-align: left;
+    top: 0;
+    width: 59px;
+}
+.header .mod-languages ul{
+    width: 65px;
+}
+.header .mod-languages ul li{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.header .mod-languages .lang-active{
+    opacity: 0.25;
+}
 .footer{
     background-color: #f4f4f4;
     padding: 30px 0;

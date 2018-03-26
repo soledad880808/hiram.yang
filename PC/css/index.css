@@ -34,6 +34,49 @@
     float: right;
     color: #707070;
 }
+.main .content .news .form-model .title{
+    font-size: 20px;
+    color: #104A7C;
+}
+.main .content .form-model .inputbox{
+    box-sizing: border-box;
+    background: none repeat scroll 0 0 transparent;
+    border: 1px solid #D6D6D6;
+    color: #888888;
+    font-size: 13px;
+    font-style: normal;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 6px;
+}
+.main .content .news .form-model .search-box{
+    width: 100%;
+}
+.main .content .news .form-model .search-box .inputbox{
+    width: auto;
+}
+.main .content .news .form-model .search-box .search-btn {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 12px;
+    display: block;
+    font-size: 12px;
+    background: #F6F6F6;
+    color: #707070;
+    cursor: pointer;
+    float: right;
+}
+.main .content .news .form-model .btn{
+    cursor: pointer;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: #F6F6F6;
+    text-align: center;
+    color: #707070;
+    font-size: 14px;
+}
 .main .content .product {}
 .main .content .product .title a{
     color: #104A7C;
