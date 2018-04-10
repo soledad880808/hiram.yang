@@ -8,11 +8,11 @@
 .main .wrapper{}
 .main .wrapper .main-menu{
     float: left;
-    width: 30%;
+    width: 25%;
 }
 .main .wrapper .main-content{
     float: right;
-    width: 70%;
+    width: 75%;
 }
 .main .main-menu h3{
     padding: 0 0 15px 0;
