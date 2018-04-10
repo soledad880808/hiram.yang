@@ -57,7 +57,7 @@
     font-size: 18px;
 }
 .main .main-content .product-header .right .introduction-box li{
-    line-height: 40px;
+    line-height: 40px;display:block;
 }
 .main .main-content .product-details{
     padding-top: 20px;
@@ -90,4 +90,5 @@
 .main .main-content .product-details .right-details{
     float:right;
     width: 500px;
+	overflow:hidden
 }
