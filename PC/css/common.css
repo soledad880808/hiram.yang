@@ -78,6 +78,29 @@ iframe {
 .header .nav {
     position: relative;
 }
+.header .nav li {
+    position: relative;
+}
+.header .nav li .childcontent {
+    position: absolute;
+    background-color: white;
+    z-index: 100;
+    top:40px;
+    background: #fff url(http://lase.de/templates/lase_en/images/bgdot.png) 0 0 repeat;
+    padding: 10px;
+}.header .nav li .childcontent ul{
+    background-color: white;
+    border: 1px solid #d0d0d0;
+}
+.header .nav li .childcontent ul li{
+    display: block;
+    padding: 0 10px;
+}
+.header .nav li .childcontent ul a{
+    display: block;
+    padding-left: 20px;
+    border-bottom: 1px dotted #d0d0d0;
+}
 .header .logo {
     position: absolute;
     width: 220px;
@@ -140,6 +163,43 @@ iframe {
 }
 .header .mod-languages .lang-active{
     opacity: 0.25;
+}
+.main .wrapper .main-content{
+    float: right;
+    width: 75%;
+}
+.main .main-menu h3{
+    padding: 0 0 15px 0;
+    font-size: 20px;
+    color: #104A7C;
+    margin-right: 80px;
+}
+.main .main-menu .ja-box-ct{
+    margin-right: 40px;
+}
+.main .main-menu .ja-box-ct ul.menu li ul{
+    margin-left: 20px;
+}
+.main .main-menu ul li{
+    display: block;
+}
+.main .main-menu .item .link{
+    display: block;
+    padding: 6px 0 6px 20px;
+    border-bottom: 1px dotted #d0d0d0;
+    color: #888;
+    background: url(http://www.lase.de/templates/lase/images/arrow3.png) 0 -20px no-repeat;
+}
+
+.main .main-menu .active{
+    border:0;
+}
+.main .main-menu .active .link{
+    color: #104A7C;
+}
+.main .wrapper .main-menu{
+    float: left;
+    width: 25%;
 }
 .footer{
     background-color: #f4f4f4;

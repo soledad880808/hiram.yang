@@ -25,9 +25,27 @@
 				</li>
 				<li>
 					<a href="">OPTRACK</a>
+					<div class="childcontent" style="display: none">
+							<div class="megacol" style="width:200px">
+									<ul>
+										<li class="mega"><a href="">aaaa</a></li>
+										<li class="mega"><a href="">bbb</a></li>
+										<li class="mega"><a href="">cccc</a></li>
+									</ul>
+								</div>
+						</div>
 				</li>
 				<li>
 					<a href="">产品中心</a>
+					<div class="childcontent" style="display: none">
+							<div class="megacol" style="width:200px">
+								<ul>
+									<li class="mega"><a href="">aaaa</a></li>
+									<li class="mega"><a href="">bbb</a></li>
+									<li class="mega"><a href="">cccc</a></li>
+								</ul>
+							</div>
+						</div>
 				</li>
 				<li>
 					<a href="">行业解决方案</a>
@@ -374,6 +392,13 @@
 					return '<span class="' + className + '">' + arr[index] + '</span>';
 				}
 			},
+		})
+	
+	
+		$(".nav li").hover(function(){
+			$(this).find('.childcontent').stop(true, true).slideDown();
+		},function(){
+			$(this).find('.childcontent').stop(true, true).slideUp();
 		})
 	});
 </script>
