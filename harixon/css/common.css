@@ -1,0 +1,246 @@
+/* reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td{margin:0;padding:0}
+table{border-collapse:collapse;border-spacing:0}
+fieldset,img{border:0}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}
+ol,ul {list-style:none}
+caption,th {text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+q:before,q:after{content:''}
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+	color: #888888 ;
+}
+
+/* font */
+.f12{font-size:12px!important}
+.f14{font-size:14px!important}
+.bold{font-weight:bold}
+.normal{font-weight:normal}
+.font_none{font-size:0px; line-height:0px}
+
+/* color */
+.red , .red a{color:#f00!important}
+.gray, .gray a {color:#666!important}
+.green , .green a {color:#76c56a!important}
+.orange, .orange a {color:#fd864a!important}
+
+/*layout*/
+.block{display:block}
+.hidden{display:none}
+.bg_none{background:none!important}
+.float_left{float:left}
+.float_right{float:right}
+.margin_10{margin:10px}
+.margin_20{margin:20px}
+.margin_top{margin-top:10px}
+.margin_right{margin-right:10px}
+.margin_bottom{margin-bottom:10px}
+.margin_left{margin-left:10px}
+.padding_10{padding:10px}
+.padding_20{padding:20px}
+.padding_top{padding-top:10px}
+.padding_right{padding-right:10px}
+.padding_bottom{padding-bottom:10px}
+.padding_left{padding-left:10px}
+.nopadding{padding:0!important}
+.mt10{margin-top:10px}
+.mt20{margin-top:20px}
+.tjustify{text-align: justify;}
+.clearfix{overflow:auto;_height:1%}
+html body{
+	background-color:#FFFFFF;
+	font-family: "微软雅黑", Arial;
+	font-size: 12px;
+	color:#000;
+	width:100%;
+	
+}
+ul li{
+	list-style: none;
+	display:inline-block;
+}
+iframe {
+	padding: 0;
+	margin: 0;
+	border: none;	
+}
+.wrapper {
+    width: 980px;
+    margin: 0 auto;
+}
+.header {
+    border-bottom: 6px solid #d8d8d8;   
+}
+.header .wrapper{
+    position: relative;
+}
+.header .nav {
+    position: relative;
+}
+.header .nav li {
+    position: relative;
+}
+.header .nav li .childcontent {
+    position: absolute;
+    background-color: white;
+    z-index: 100;
+    top:40px;
+    background: #fff url(http://lase.de/templates/lase_en/images/bgdot.png) 0 0 repeat;
+    padding: 10px;
+}.header .nav li .childcontent ul{
+    background-color: white;
+    border: 1px solid #d0d0d0;
+}
+.header .nav li .childcontent ul li{
+    display: block;
+    padding: 0 10px;
+}
+.header .nav li .childcontent ul a{
+    display: block;
+    padding-left: 20px;
+    border-bottom: 1px dotted #d0d0d0;
+}
+.header .logo {
+    position: absolute;
+    width: 220px;
+    height: 95px;
+    top: 60px;
+    left: -13px;
+    z-index: 10;
+}
+.header .logo img {
+    width: 100%;
+}
+.header .nav li {
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+}
+
+.header .nav li a {
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+.header .nav .active {
+    cursor: pointer;
+}
+
+.header .nav .active:after {
+    content: '';
+    position: absolute;
+    background-color: #104A7C;
+    width: 100%;
+    display: inline-block;
+    height: 6px;
+    left: 0;
+    bottom: -6px;
+}
+
+.header .nav .active a {
+    color: #104A7C;
+}
+
+.header .nav li a:hover {
+    color: #104A7C;
+}
+.header .mod-languages{
+    border: 1px solid #F1F1F1;
+    left: 910px;
+    padding: 5px;
+    position: absolute;
+    text-align: left;
+    top: 0;
+    width: 59px;
+}
+.header .mod-languages ul{
+    width: 65px;
+}
+.header .mod-languages ul li{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.header .mod-languages .lang-active{
+    opacity: 0.25;
+}
+.main .wrapper .main-content{
+    float: right;
+    width: 75%;
+}
+.main .main-menu h3{
+    padding: 0 0 15px 0;
+    font-size: 20px;
+    color: #104A7C;
+    margin-right: 80px;
+}
+.main .main-menu .ja-box-ct{
+    margin-right: 40px;
+}
+.main .main-menu .ja-box-ct ul.menu li ul{
+    margin-left: 20px;
+}
+.main .main-menu ul li{
+    display: block;
+}
+.main .main-menu .item .link{
+    display: block;
+    padding: 6px 0 6px 20px;
+    border-bottom: 1px dotted #d0d0d0;
+    color: #888;
+    background: url(http://www.lase.de/templates/lase/images/arrow3.png) 0 -20px no-repeat;
+}
+
+.main .main-menu .active{
+    border:0;
+}
+.main .main-menu .active .link{
+    color: #104A7C;
+}
+.main .wrapper .main-menu{
+    float: left;
+    width: 25%;
+}
+.footer{
+    background-color: #f4f4f4;
+    padding: 30px 0;
+}
+.footer .column{
+    width: 20%;
+    text-align: left;
+    float: left;
+}
+.footer .column h3{
+    padding: 0 0 16px;
+    font-size: 18px;
+    color: #104A7C;
+}
+.footer .column .menu{}
+.footer .column .menu .item{
+    display: block; 
+    padding-right: 20px;
+}
+.footer .column .menu .item a{
+    color: #313131;
+    padding: 6px 0 6px 0;
+    display: block;
+    border-bottom: 1px dotted #333;
+}
+.footer .footer-info{
+    background-color: white;
+    margin: 80px auto 20px auto;
+}
+.footer .footer-info small{
+    display: inline-block;
+    padding: 6px 20px;
+    color: #707070;
+    line-height: 22px;
+}
+.code{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2;
+}

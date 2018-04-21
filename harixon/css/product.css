@@ -1,0 +1,71 @@
+.banner-sub-page{
+    background: url(../img/bg-slider-bottom.png) 100% 100% repeat-x #f0f0f0;
+}
+.banner-sub-page .content{
+ padding: 0 0 11px;
+}
+.main{}
+.main .wrapper{}
+
+.main .main-content .product-header{
+    display: flex;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #ddd;
+}
+.main .main-content .product-header .left{
+    width: 50%;
+}
+.main .main-content .product-header .left h1{
+    font-size: 20px;
+}
+.main .main-content .product-header .left img{
+    width: 100%;
+    height: 230px;
+}
+.main .main-content .product-header .right{
+    width: 50%;
+}
+.main .main-content .product-header .right .introduction-box{
+    background-color: #f7f5f5;
+    padding: 20px;
+    height: 220px;
+}
+.main .main-content .product-header .right .introduction-box p{
+    font-size: 18px;
+}
+.main .main-content .product-header .right .introduction-box li{
+    line-height: 40px;display:block;
+}
+.main .main-content .product-details{
+    padding-top: 20px;
+}
+.main .main-content .product-details .left-menu{
+    width: 160px;
+    float:left;
+}
+.main .main-content .product-details .left-menu li{
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border:1px solid #ddd;
+    border-bottom: 0;
+    cursor: pointer;
+}
+.main .main-content .product-details .left-menu .active{
+    background-color: #104A7C;
+    color: white;
+}
+.main .main-content .product-details .left-menu li:hover{
+    background-color: #104A7C;
+    color: white;
+}
+.main .main-content .product-details .left-menu li:last-child{
+    border-bottom: 1px solid #ddd;
+}
+
+.main .main-content .product-details .right-details{
+    float:right;
+    width: 550px;
+	overflow:hidden
+}
