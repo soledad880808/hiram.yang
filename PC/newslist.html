@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery-2.1.3.js"></script>
+    <script src="js/kkpager.min.js"></script>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/kkpager_blue.css" />
+    <style>
+        .news-list {
+            color: #888;
+        }
+        .news-list ul {
+            padding-bottom: 20px;
+        }
+        .news-list ul li{
+            display: block;
+            padding-top: 20px;
+            padding-bottom: 4px;
+            border-bottom: 1px dotted #d0d0d0;
+            position: relative;
+        }
+        .news-list ul li i{
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #104A7C;
+            margin-right: 6px;
+            position: relative;
+            top:-2px;
+        }
+        .news-list ul li a{
+            font-size: 14px;
+        }
+        .news-list ul li a:hover{
+            color:  #104A7C;
+        }
+        .news-list ul li .time{
+        position: absolute;
+        right: 0px;
+        top:24px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="wrapper">
+            <ul class="nav mt20">
+                <li>
+                    <a href="">首页</a>
+                </li>
+                <li>
+                    <a href="">OPTRACK</a>
+                </li>
+                <li>
+                    <a href="">产品中心</a>
+                </li>
+                <li>
+                    <a href="">行业解决方案</a>
+                </li>
+                <li>
+                    <a href="">关于我们</a>
+                </li>
+                <li class="active">
+                    <a href="">联系我们</a>
+                </li>
+                <div class="logo">
+                    <a href="">
+                        <img src="img/leo_logo_1.png" alt="">
+                    </a>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <div class="banner-sub-page">
+        <div class="content wrapper">
+            <img src="http://www.lase.de/images/banners/05.png" alt="">
+        </div>
+    </div>
+    <div class="main mt20">
+        <div class="wrapper clearfix">
+            <div class="main-menu">
+                <div class="ja-box-ct">
+                    <h3>Main Menu</h3>
+                    <ul class="menu">
+                        <li class="item">
+                            <a class="link" href="">OPTRACK</a>
+                            <ul>
+                                <li class="item">
+                                    <a class="link" href="">行业解决方案</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="">产品中心</a>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="">行业解决方案</a>
+                        </li>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="">联系我们</a>
+                        </li>
+                        <li class="item active">
+                            <a class="link" href="">关于我们</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-content news-list">
+                <ul>
+                    <li><i class="icon"></i><a href="">新闻新闻标题新闻标题新闻标题新闻标题标题</a><span class="time">2019-00-00</span></li>
+                    <li><i class="icon"></i><a href="">新闻新闻标题新闻标题新闻标题新闻标题标题</a><span class="time">2019-00-00</span></li>
+                    <li><i class="icon"></i><a href="">新闻新闻标题新闻标题新闻标题新闻标题标题</a><span class="time">2019-00-00</span></li>
+                    <li><i class="icon"></i><a href="">新闻新闻标题新闻标题新闻标题新闻标题标题</a><span class="time">2019-00-00</span></li>
+                    <li><i class="icon"></i><a href="">新闻新闻标题新闻标题新闻标题新闻标题标题</a><span class="time">2019-00-00</span></li>
+                </ul>
+                <div id="kkpager"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer mt20">
+        <div class="wrapper clearfix">
+            <div class="column">
+                <h3>OPTRACK</h3>
+                <ul class="menu">
+                    <li class="item">
+                        <a href="">OPTRACK1</a>
+                    </li>
+                    <li class="item">
+                        <a href="">OPTRACK2</a>
+                    </li>
+                    <li class="item">
+                        <a href="">OPTRACK3</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>产品中心</h3>
+                <ul class="menu">
+                    <li class="item">
+                        <a href="">编码器</a>
+                    </li>
+                    <li class="item">
+                        <a href="">直线位移传感器</a>
+                    </li>
+                    <li class="item">
+                        <a href="">拉线盒</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>行业解决方案</h3>
+                <ul class="menu">
+                    <li class="item">
+                        <a href="">钢铁工业</a>
+                    </li>
+                    <li class="item">
+                        <a href="">物流和仓储</a>
+                    </li>
+                    <li class="item">
+                        <a href="">风能</a>
+                    </li>
+                    <li class="item">
+                        <a href="">汽车工业</a>
+                    </li>
+                    <li class="item">
+                        <a href="">港口</a>
+                    </li>
+                    <li class="item">
+                        <a href="">工程机械</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>关于我们</h3>
+                <ul class="menu">
+                    <li class="item">
+                        <a href="">关于海汭森</a>
+                    </li>
+                    <li class="item">
+                        <a href="">公司新闻</a>
+                    </li>
+                    <li class="item">
+                        <a href="">行业新闻</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>联系我们</h3>
+                <ul class="menu">
+                    <li class="item">
+                        <a href="">联系海汭森</a>
+                    </li>
+                    <li class="item">
+                        <a href="">公司团队</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-info wrapper">
+            <small>Copyright © 2018 海汭森（上海）工程技术有限公司 All Rights Reserved. </small>
+        </div>
+    </div>
+</body>
+<script>
+    //生成分页
+    //有些参数是可选的，比如lang，若不传有默认值
+    kkpager.generPageHtml({
+        pno: 10,
+        //总页码
+        total: 20,
+        //总数据条数
+        totalRecords: 100,
+        //链接前部
+        hrefFormer: 'demo',
+        //链接尾部
+        hrefLatter: '.html',
+        isGoPage: false,
+        getLink: function (n) {
+            return this.hrefFormer + this.hrefLatter + "?pno=" + n;
+        }, mode: 'click',//默认值是link，可选link或者click
+        click: function (n) {
+            this.selectPage(n);
+            return false;
+        }
+    });
+</script>
+
+</html>
