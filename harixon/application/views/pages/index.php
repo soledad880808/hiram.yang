@@ -51,10 +51,10 @@
 					<a href="">行业解决方案</a>
 				</li>
 				<li>
-					<a href="">关于我们</a>
+					<a href="<?php echo base_url()?>about">关于我们</a>
 				</li>
 				<li>
-					<a href="">联系我们</a>
+					<a href="<?php echo base_url()?>contact">联系我们</a>
 				</li>
 				<div class="logo">
 					<a href="">

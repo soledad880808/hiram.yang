@@ -28,10 +28,10 @@ class Harixon_Controller extends CI_Controller{
 	 * @access public
 	 * @author yanghua
 	 */
-	public function display($templates=null,$data=''){
+	public function display($template=null,$data=''){
 		$this->load->view('templates/header',$data);
 		$this->load->view('templates/left');
-        $this->load->view($template);
+        $this->load->view('pages/' . $template);
 		$this->load->view('templates/footer');
 	}
 }
