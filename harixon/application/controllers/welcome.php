@@ -20,6 +20,8 @@ class welcome extends Harixon_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('pages/index');
+		$this->load->config('nav.config');
+		$data['nav'] = $this->config->item('nav');
+		$this->load->view('pages/harixon/index',$data);
 	}
 }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class product extends Harixon_Controller {
+class news extends Harixon_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,11 +18,19 @@ class product extends Harixon_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index(){
-		$this->display('productlist');
+	public function index()
+	{
+		$pageno = $this->input->get('pageno');
+		$pageno = !empty($pageno) ? $pageno : 1;
+		$newslist = $this->model('news_model')->newslist($pageno);
+		$newslist['pageno'] = $pageno;
+		$newslist['pagetotal'] = ceil($newslist['total']/PAGESIZE);
+		$this->display('newslist',$newslist);
 	}
 
-	public function productdetail(){
-		$this->display('productdetail');
+	public function newsdetail(){
+		$id = $this->input->get('id');
+		$newsdetail = $this->model('news_model')->newsdetail($id);
+		$this->display('newsdetail',$newsdetail);
 	}
 }

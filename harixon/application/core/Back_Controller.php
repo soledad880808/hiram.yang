@@ -1,5 +1,5 @@
 <?php
-class Harixon_Controller extends CI_Controller{
+class Back_Controller extends CI_Controller{
 
     function __construct(){
         parent::__construct();    
@@ -31,9 +31,9 @@ class Harixon_Controller extends CI_Controller{
 	public function display($template=null,$data=array()){
         $this->load->config('nav.config');
         $data['nav'] = $this->config->item('nav');
-		$this->load->view('templates/harixon/header',$data);
-		$this->load->view('templates/harixon/left');
-        $this->load->view('pages/harixon/' . $template);
-		$this->load->view('templates/harixon/footer');
+		$this->load->view('templates/back/header',$data);
+		$this->load->view('templates/back/left');
+        $this->load->view('pages/back' . $template);
+		$this->load->view('templates/back/footer');
 	}
 }
