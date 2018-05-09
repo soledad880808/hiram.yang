@@ -1,10 +1,10 @@
         <div class="main-content contact-wrapper">
             <p class="title">联系我们</p>
             <p class="item">上海博程电子科技有限公司</p>
-            <p class="item">上海市杨浦区赤峰路65号同济科技园1号楼208室 200092</p>
-            <p class="item"><i class="iconfont icon-phone"></i> 电话：+86(21)55893777, +86(21)55893086</p>
-            <p class="item"><i class="iconfont icon-phone1"></i>手机：+86(21)55893000</p>
-            <p class="item"><i class="iconfont icon-email"></i>邮箱：info@prochen.com</p>
+            <p class="item"><?php echo $contactinfo['address']?></p>
+            <p class="item"><i class="iconfont icon-phone"></i> 电话：<?php echo $contactinfo['phone']?></p>
+            <p class="item"><i class="iconfont icon-phone1"></i>手机：<?php echo $contactinfo['mobile']?></p>
+            <p class="item"><i class="iconfont icon-email"></i>邮箱：<?php echo $contactinfo['email']?></p>
             <div id="container"></div>
         </div>
     </div>

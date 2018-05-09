@@ -20,6 +20,7 @@ class contact extends Harixon_Controller {
 	 */
 	public function index()
 	{
-		$this->display('contact');
+		$contactinfo = $this->model('contact_model')->contactinfo();
+		$this->display('contact',$contactinfo);
 	}
 }

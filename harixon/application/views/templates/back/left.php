@@ -8,32 +8,23 @@
             <img src="<?PHP echo base_url();?>dist/img/user2.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-            <p><?PHP echo $_SESSION['name']?></p>
+            <p>管理员</p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
     </div>
     <ul class="sidebar-menu">
         <?php
-            foreach($_left as $key => $value){
-                if(isset($value['list'])){
-                    $html = '';
-                    foreach($value['list'] as $k => $v){
-                        if(in_array($v['key'],$_auth)){
-                            $html .= '<li class="' . $v['active'] . '"><a href="' . site_url($v['url']) .'"><i class="fa fa-circle-o"></i> ' . $v['title'] . '</a></li>';
-                        }
-                    }
-                    if(!empty($html)){
-                        echo '<li class="treeview">';
-                        echo '<a href="#"><i class="fa fa-dashboard"></i> <span>' . $value['title'] . '</span> <i class="fa fa-angle-left pull-right"></i></a>';
-                        echo '<ul class="treeview-menu">';
-                        echo $html;
-                        echo '</ul></li>';
-                    }
+            $current_url = current_url();
+            $url_ar = explode('?',$current_url);
+            $url_arr = explode('/',$url_ar[0]);
+            $suffix = array_pop($url_arr);
+            foreach($_back_left as $key => $value){
+                if(in_array($suffix,$value['active'])){
+                    echo '<li class="active"><a href="' . site_url($value['url']) . '"><i class="fa fa-circle"></i> <span>' . $value['name'] . '</span></a></li>';
                 }else{
-                    if(in_array($value['key'],$_auth)){
-                        echo '<li class="' . $value['active'] . '"><a href="' . site_url($value['url']) . '"><i class="fa fa-circle"></i> <span>' . $value['title'] . '</span></a></li>';    
-                    }
+                    echo '<li><a href="' . site_url($value['url']) . '"><i class="fa fa-circle"></i> <span>' . $value['name'] . '</span></a></li>';
                 }
+                   
             }    
         ?>
     </ul>
@@ -41,23 +32,3 @@
 <!-- /.sidebar -->
 </aside>
 <div class="content-wrapper">
-<script>
-    $(function(){
-        var url = location.href;
-        var url_ar = url.split('/');
-        var a = '';
-        while(a == ''){
-            a = url_ar.pop();
-        }
-        var c = url_ar.pop();
-        var a_ar = a.split('?');
-        var active = a_ar.shift().replace('#','');
-        if($('.' + active)[0]){
-            $('.' + active).addClass('active');
-            if($('.' + active).parent().hasClass('treeview-menu')){
-                $('.' + active).parent().parent().addClass('active');
-                $('.' + active).parent().show();
-            }
-        }
-    });
-</script>

@@ -23,8 +23,7 @@ class Harixon_Controller extends CI_Controller{
         return $this->$model;
     }
 
-/**
-	 * 页面展示，支持加载多模板，多个模板之间用“,”号隔开
+    /**
 	 * @access public
 	 * @author yanghua
 	 */
@@ -36,4 +35,13 @@ class Harixon_Controller extends CI_Controller{
         $this->load->view('pages/harixon/' . $template);
 		$this->load->view('templates/harixon/footer');
 	}
+
+    public function backdisplay($template=null,$data=array()){
+        $this->load->config('nav.config');
+        $data['_back_left'] = $this->config->item('_back_left');
+        $this->load->view('templates/back/header',$data);
+        $this->load->view('templates/back/left');
+        $this->load->view('pages/back/' . $template);
+        $this->load->view('templates/back/footer');
+    }
 }
