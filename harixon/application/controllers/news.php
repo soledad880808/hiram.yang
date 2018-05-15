@@ -18,11 +18,11 @@ class news extends Harixon_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function newslist()
 	{
-		$pageno = $this->input->get('pageno');
-		$pageno = !empty($pageno) ? $pageno : 1;
-		$newslist = $this->model('news_model')->newslist($pageno);
+		$type = qp('type','int','1');
+		$pageno = qp('pageno','int','1');
+		$newslist = $this->model('news_model')->newslist($type,$pageno,PAGESIZE);
 		$newslist['pageno'] = $pageno;
 		$newslist['pagetotal'] = ceil($newslist['total']/PAGESIZE);
 		$this->display('newslist',$newslist);

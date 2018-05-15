@@ -21,7 +21,11 @@ class welcome extends Harixon_Controller {
 	public function index()
 	{
 		$this->load->config('nav.config');
-		$data['nav'] = $this->config->item('nav');
+		$data['_nav'] = $this->config->item('nav');
+		$newslist = $this->model('news_model')->newslist(1,1,3);
+		$data['company_newslist'] = $newslist['newslist'];
+		$newslist = $this->model('news_model')->newslist(2,1,3);
+		$data['industry_newslist']= $newslist['newslist'];
 		$this->load->view('pages/harixon/index',$data);
 	}
 }

@@ -21,12 +21,21 @@
 		<div class="wrapper">
 			<ul class="nav mt20">
 			<?php
-				foreach($nav as $key => $value){
+				foreach($_nav as $key => $value){
 					if($value['url'] == ''){
-						echo '<li><a href="' . base_url($value['url']) . '" class="active">' . $value['name'] . '</a></li>';
+						echo '<li><a href="' . base_url($value['url']) . '" class="active">' . $value['name'] . '</a>';
 					}else{
-						echo '<li><a href="' . base_url($value['url']) . '">' . $value['name'] . '</a></li>';
+						echo '<li><a href="' . base_url($value['url']) . '">' . $value['name'] . '</a>';
 					}
+					if(isset($value['list'])){
+                        echo '<div class="childcontent" style="display: none">';
+                        echo '<div class="megacol" style="width:200px"><ul>';
+                        foreach($value['list'] as $k => $v){
+                            echo '<li class="mega"><a href="' . base_url($v['url']) . '">' . $v['name'] . '</a></li>';
+                        }
+                        echo '</ul></div></div>';
+                    }
+                    echo '</li>';
 				}
 			?>
 				<div class="logo">
@@ -71,33 +80,37 @@
 				<div class="moduletable">
 					<dl class="item">
 						<dt class="title">公司新闻：</dt>
-						<dd class="con" style="margin-top:10px;">
-							<p class="">中马PPL机组张力升级改造项目顺利通过最终验收</p>
-							<span class="time">2017-10-13</span>
-						</dd>
-						<dd class="con">
-							<p class="">湛江钢铁2030mm冷轧新建重卷机组</p>
-							<span class="time">2017-12-21</span>
-						</dd>
-						<dd class="con">
-							<p class="">本钢超薄酸洗机组改造</p>
-							<span class="time">2018-02-11</span>
-						</dd>
+						<?php
+							$i = 1;
+							foreach($company_newslist as $key => $value){
+								$style = '';
+								if($i == 1){
+									$style = ' style="margin-top:10px"';
+								}
+								echo '<dd class="con"' . $style . '>';
+								echo '<p class="J-news" data-id="' . $value['id'] . '" style="cursor:pointer">' . $value['title'] . '</p>';
+								echo '<span class="time">' . date('Y-m-d',$value['updated']) . '</span>';
+								echo '</dd>';
+								$i++;
+							}
+						?>
 					</dl>
 					<dl class="item mt20">
 						<dt class="title">行业新闻：</dt>
-						<dd class="con" style="margin-top:10px;">
-							<p class="">2018工业互联网峰会在京隆重召开</p>
-							<span class="time">2018-02-02</span>
-						</dd>
-						<dd class="con">
-							<p class="">中央表态了：今后“技术蓝领”会更吃香</p>
-							<span class="time">2017-11-15</span>
-						</dd>
-						<dd class="con">
-							<p class="">《中国制造2025》2017版技术路线图发布</p>
-							<span class="time">2017-01-26</span>
-						</dd>
+						<?php
+							$i = 1;
+							foreach($industry_newslist as $key => $value){
+								$style = '';
+								if($i == 1){
+									$style = ' style="margin-top:10px"';
+								}
+								echo '<dd class="con"' . $style . '>';
+								echo '<p class="J-news" data-id="' . $value['id'] . '" style="cursor:pointer">' . $value['title'] . '</p>';
+								echo '<span class="time">' . date('Y-m-d',$value['updated']) . '</span>';
+								echo '</dd>';
+								$i++;
+							}
+						?>
 					</dl>
 
 					<div class="form-model mt20">
@@ -373,6 +386,11 @@
 		},function(){
 			$(this).find('.childcontent').stop(true, true).slideUp();
 		})
+	});
+
+	$('.J-news').click(function(){
+		var id = $(this).data('id');
+		location.href = '<?php echo base_url();?>news/newsdetail?id=' + id;
 	});
 </script>
 

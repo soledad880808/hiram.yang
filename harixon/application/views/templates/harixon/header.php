@@ -26,10 +26,19 @@
                     $suffix = array_pop($url_arr);
                     foreach($nav as $key => $value){
                         if(in_array($suffix,$value['active'])){
-                            echo '<li><a href="' . base_url($value['url']) . '" class="active">' . $value['name'] . '</a></li>';
+                            echo '<li><a href="' . base_url($value['url']) . '" class="active">' . $value['name'] . '</a>';
                         }else{
-                            echo '<li><a href="' . base_url($value['url']) . '">' . $value['name'] . '</a></li>';
+                            echo '<li><a href="' . base_url($value['url']) . '">' . $value['name'] . '</a>';
                         }
+                        if(isset($value['list'])){
+                            echo '<div class="childcontent" style="display: none">';
+                            echo '<div class="megacol" style="width:200px"><ul>';
+                            foreach($value['list'] as $k => $v){
+                                echo '<li class="mega"><a href="' . base_url($v['url']) . '">' . $v['name'] . '</a></li>';
+                            }
+                            echo '</ul></div></div>';
+                        }
+                        echo '</li>';
                     }
                 ?>
                 <div class="logo">
@@ -42,6 +51,15 @@
     </div>
     <div class="banner-sub-page">
         <div class="content wrapper">
-            <img src="http://www.lase.de/images/banners/05.png" alt="">
+            <img src="<?php echo base_url();?>img/05.png" alt="">
         </div>
     </div>
+    <script type="text/javascript">
+        $(function(){
+            $(".nav li").hover(function(){
+                $(this).find('.childcontent').stop(true, true).slideDown();
+            },function(){
+                $(this).find('.childcontent').stop(true, true).slideUp();
+            })
+        });
+    </script>

@@ -8,7 +8,21 @@
 		array(
 			'name' => '新闻中心',
 			'url' => 'news',
-			'active' => array('news')
+			'active' => array('news','newsdetail'),
+			'list' => array(
+				array(
+					'name' => '公司新闻',
+					'url' => 'news/newslist?type=1',
+					'active' => array('newslist','newsdetail'),
+					'active_type' => '1',
+				),
+				array(
+					'name' => '行业新闻',
+					'url' => 'news/newslist?type=2',
+					'active' => array('newslist','newsdetail'),
+					'active_type' => '2',
+				)
+			)
 		),
 		array(
 			'name' => '产品中心',

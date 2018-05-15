@@ -13,10 +13,20 @@
                             if($value['url'] == ''){
                                 continue;
                             }
-                            if(in_array($suffix,$value['active'])){
-                                echo '<li class="item active"><a class="link" href="' . base_url($value['url']) . '" class="active">' . $value['name'] . '</a></li>';
+                            if(isset($value['list'])){
+                                echo '<li class="item"><a class="link" href="javascript:void(0)">' . $value['name'] . '</a>';
+                                echo '<ul>';
+                                foreach($value['list'] as $k => $v){
+                                    echo '<li calss="item"><a class="link" href="' . base_url($v['url']) . '">' . $v['name'] . '</a></li>';
+                                }
+                                echo '</ul>';
+                                echo '</li>';
                             }else{
-                                echo '<li class="item"><a class="link" href="' . base_url($value['url']) . '">' . $value['name'] . '</a></li>';
+                                if(in_array($suffix,$value['active'])){
+                                    echo '<li class="item active"><a class="link" href="' . base_url($value['url']) . '" class="active">' . $value['name'] . '</a></li>';
+                                }else{
+                                    echo '<li class="item"><a class="link" href="' . base_url($value['url']) . '">' . $value['name'] . '</a></li>';
+                                }
                             }
                         }
                     ?>
