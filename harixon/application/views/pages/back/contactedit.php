@@ -8,6 +8,10 @@
         <div class="box-body">
             <form role="form" onsubmit="return false">
                 <div class="form-group">
+                    <label>公司名称<em class="text-red">*</em>：</label>
+                    <input id="J-coname" type="text" class="form-control" value="<?php echo !empty($contactinfo) ? $contactinfo['coname'] : '';?>"/>
+                </div>
+                <div class="form-group">
                     <label>地址<em class="text-red">*</em>：</label>
                     <input id="J-address" type="text" class="form-control" value="<?php echo !empty($contactinfo) ? $contactinfo['address'] : '';?>"/>
                 </div>
@@ -23,6 +27,10 @@
                     <label>邮箱<em class="text-red">*</em>：</label>
                     <input id="J-email" type="text" class="form-control" value="<?php echo !empty($contactinfo) ? $contactinfo['email'] : '';?>"/>
                 </div>
+                 <div class="form-group">
+                    <label>坐标<em class="text-red">*</em>：</label>
+                    <input id="J-coordinate" type="text" class="form-control col-xs-5" value="<?php echo !empty($contactinfo) ? $contactinfo['coordinate'] : '';?>"/>
+                </div>
             </form>
         </div>
         <div class="box-footer">
@@ -34,16 +42,20 @@
 </section>
 <script>
     $('#J-save').click(function(){
-        var address = $('#J-address').val(),
+        var coname = $('#J-coname').val(),
+            address = $('#J-address').val(),
             phone = $('#J-phone').val(),
             mobile = $('#J-mobile').val(),
             email = $('#J-email').val(),
+            coordinate = $('#J-coordinate').val(),
             url = domain + 'backmanage/changecontact';
         var param = {
+            'coname':coname,
             'address':address,
             'phone':phone,
             'mobile':mobile,
-            'email':email
+            'email':email,
+            'coordinate':coordinate
         };
         ajaxRequest(url,param,function(obj){
             if(obj.code == 1){

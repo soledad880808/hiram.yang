@@ -7,8 +7,8 @@
 		),
 		array(
 			'name' => '新闻中心',
-			'url' => 'news',
-			'active' => array('news','newsdetail'),
+			'url' => 'news/newslist?type=1',
+			'active' => array('newslist','newsdetail'),
 			'list' => array(
 				array(
 					'name' => '公司新闻',
@@ -26,13 +26,13 @@
 		),
 		array(
 			'name' => '产品中心',
-			'url' => 'product',
-			'active' => array('product','productdetail')
+			'url' => 'product/productlist',
+			'active' => array('productlist','productdetail')
 		),
 		array(
 			'name' => '行业解决方案',
-			'url' => 'schema',
-			'active' => array('schema')
+			'url' => 'schema/schemalist',
+			'active' => array('schemalist')
 		),
 		array(
 			'name' => '关于我们',
@@ -60,7 +60,12 @@
 		array(
 			'name' => '产品中心',
 			'url' => 'backmanage/productlist',
-			'active' => array('productlist')
+			'active' => array('productlist','productedit')
+		),
+		array(
+			'name' => '行业解决方案',
+			'url' => 'backmanage/schemalist',
+			'active' => array('schemalist','schemaedit')
 		)
 	)
 ?>

@@ -1,42 +1,22 @@
         <div class="main-content product-list">
             <ul>
-                <li>
-                    <div>
-                        <a href="<?php echo base_url('product/productdetail')?>">
-                            <img src="./img/ssi.png" alt="">
-                            <p>产品名称产品名称产品名称</p>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <a href="<?php echo base_url('product/productdetail')?>">
-                            <img src="./img/ssi.png" alt="">
-                            <p>产品名称产品名称产品名称</p>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <a href="<?php echo base_url('product/productdetail')?>">
-                            <img src="./img/ssi.png" alt="">
-                            <p>产品名称产品名称产品名称</p>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <a href="<?php echo base_url('product/productdetail')?>">
-                            <img src="./img/ssi.png" alt="">
-                            <p>产品名称产品名称产品名称</p>
-                        </a>
-                    </div>
-                </li>
+            <?php
+                foreach($productlist as $key => $value){
+                    echo '<li><div>';
+                    echo '<a href="' . base_url('product/productdetail?id=' . $value['id']) . '">';
+                    echo '<img src="' . $value['title_pic'] . '">';
+                    echo '<p>' . $value['title'] . '</p>';
+                    echo '</a></div></li>';
+                }
+            ?>
             </ul>
             <div id="kkpager"></div>
         </div>
     </div>
 </div>
+<input type="hidden" id="total" value="<?php echo $total?>">
+<input type="hidden" id="pageno" value="<?php echo $pageno?>">
+<input type="hidden" id="pagetotal" value="<?php echo $pagetotal?>">
 <style>
     .product-list {
         color: #888;
@@ -74,14 +54,17 @@
     }
 </style>
 <script>
+    var pageno = $('#pageno').val(),
+        total = $('#total').val(),
+        pagetotal = $('#pagetotal').val();
     //生成分页
     //有些参数是可选的，比如lang，若不传有默认值
     kkpager.generPageHtml({
-        pno: 10,
+        pno: pageno,
         //总页码
-        total: 20,
+        total: pagetotal,
         //总数据条数
-        totalRecords: 100,
+        totalRecords: total,
         //链接前部
         hrefFormer: 'demo',
         //链接尾部

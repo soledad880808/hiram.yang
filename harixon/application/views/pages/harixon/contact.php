@@ -1,6 +1,6 @@
         <div class="main-content contact-wrapper">
             <p class="title">联系我们</p>
-            <p class="item">上海博程电子科技有限公司</p>
+            <p class="item"><?php echo $contactinfo['coname']?></p>
             <p class="item"><?php echo $contactinfo['address']?></p>
             <p class="item"><i class="iconfont icon-phone"></i> 电话：<?php echo $contactinfo['phone']?></p>
             <p class="item"><i class="iconfont icon-phone1"></i>手机：<?php echo $contactinfo['mobile']?></p>
@@ -33,7 +33,7 @@
 <script type="text/javascript">
     var map = new BMap.Map('container');
     // 创建地图实例
-    var point = new BMap.Point(121.507045, 31.285765);
+    var point = new BMap.Point(<?php echo $contactinfo['x_coordinate']?>, <?php echo $contactinfo['y_coordinate']?>);
     // 创建点坐标
     map.centerAndZoom(point, 15);
     //map.enableScrollWheelZoom(true); 

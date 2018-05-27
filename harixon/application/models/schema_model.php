@@ -9,15 +9,15 @@ class schema_model extends Harixon_Model {
 
 	public function schemalist($pageno){
 		$start = ($pageno-1)*PAGESIZE;
-		$sql = "select * from schema limit {$start}," . PAGESIZE;
+		$sql = "select * from `schema` limit {$start}," . PAGESIZE;
 		$schemalist = $this->db->query($sql)->result_array();
-		$sql = "select count(*) count from schema";
+		$sql = "select count(*) count from `schema`";
 		$total = $this->db->query($sql)->result_array();
 		return array('schemalist' => $schemalist,'total' => $total[0]['count']);
 	}
 
 	public function schemadetail($id){
-		$sql = "select * from schema where id={$id}";
+		$sql = "select * from `schema` where id={$id}";
 		$schemadetail = $this->db->query($sql)->result_array();
 		$schemadetail = !empty($schemadetail) ? current($schemadetail) : $schemadetail;
 		return array('schemadetail' => $schemadetail);

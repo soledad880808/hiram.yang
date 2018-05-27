@@ -18,19 +18,19 @@ class schema extends Harixon_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function schemalist()
 	{
 		$pageno = $this->input->get('pageno');
 		$pageno = !empty($pageno) ? $pageno : 1;
-		$newslist = $this->model('schema_model')->newslist($pageno);
-		$newslist['pageno'] = $pageno;
-		$newslist['pagetotal'] = ceil($newslist['total']/PAGESIZE);
-		$this->display('schemalist',$newslist);
+		$schemalist = $this->model('schema_model')->schemalist($pageno);
+		$schemalist['pageno'] = $pageno;
+		$schemalist['pagetotal'] = ceil($schemalist['total']/PAGESIZE);
+		$this->display('schemalist',$schemalist);
 	}
 
 	public function schemadetail(){
 		$id = $this->input->get('id');
 		$schemadetail = $this->model('schema_model')->schemadetail($id);
-		$this->display('newsdetail',$newsdetail);
+		$this->display('schemadetail',$schemadetail);
 	}
 }

@@ -2,7 +2,7 @@
             <div class="product-header">
                 <div class="left">
                     <h1>LMR 48 SSI 直线位移传感器</h1>
-                    <img src="<?php echo base_url()?>img/ssi.png" alt="">
+                    <img src="<?php echo $productdetail['title_pic']?>" alt="">
                 </div>
                 <div class="right">
                     <div class="introduction-box">
@@ -36,14 +36,13 @@
     					+可同时输出位置和速度</li></p>
                     </div>
                     <div class="detail" style="display:none">
-                        <p><img src="<?php echo base_url();?>img/ssi-property.png" style="width:100%" alt=""></p>
+                        <p><img src="<?php echo $productdetail['material']?>" style="width:100%" alt=""></p>
                     </div>
                     <div class="detail" style="display:none">
-
-                     <p>认证</p>
+                        <p><img src="<?php echo $productdetail['material']?>" style="width:100%" alt=""></p>
                     </div>
                     <div class="detail" style="display:none">
-                        <p><img src="<?php echo base_url();?>img/ssi-cad.png" style="width:100%" alt=""></p>
+                        <p><img src="<?php echo $productdetail['software']?>" style="width:100%" alt=""></p>
                     </div>
                     <div class="detail" style="display:none">
                         <p>普件</p>

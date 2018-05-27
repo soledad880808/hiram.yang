@@ -61,7 +61,7 @@
                   <li class="user-header">
                     <img src="<?PHP echo base_url()?>dist/img/user2.jpg" class="img-circle" alt="User Image">
                     <p>
-                      <?PHP echo $_SESSION['name'];?>
+                      管理员
                     </p>
                   </li>
                   <!-- Menu Footer-->

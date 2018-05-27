@@ -18,11 +18,19 @@ class product extends Harixon_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index(){
-		$this->display('productlist');
+	public function productlist()
+	{
+		$pageno = $this->input->get('pageno');
+		$pageno = !empty($pageno) ? $pageno : 1;
+		$productlist = $this->model('product_model')->productlist($pageno);
+		$productlist['pageno'] = $pageno;
+		$productlist['pagetotal'] = ceil($productlist['total']/PAGESIZE);
+		$this->display('productlist',$productlist);
 	}
 
 	public function productdetail(){
-		$this->display('productdetail');
+		$id = $this->input->get('id');
+		$productdetail = $this->model('product_model')->productdetail($id);
+		$this->display('productdetail',$productdetail);
 	}
 }
