@@ -1,4 +1,4 @@
-<script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>src/ckeditor5/ckeditor.js"></script>
+<script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>src/ckeditor/ckeditor.js"></script>
 <section class="content-header">
     <br/>
     <ol class="breadcrumb">
@@ -25,14 +25,14 @@
                 </div>
                 <div class="form-group">
                     <label>内容<em class="text-red">*</em>：</label>
-                    <textarea name="content" rows="10" class="editor" id="J-content">
-                        <p><?php echo !empty($productdetail) ? $productdetail['content'] : ''?></p>
+                    <textarea name="content" rows="10" class="editor" id="content">
+                        <?php echo !empty($productdetail) ? $productdetail['content'] : ''?>
                     </textarea>
                 </div>  
                 <div class="form-group">
-                    <label>内容<em class="text-red">*</em>：</label>
-                    <textarea name="content" rows="10" class="editor" id="J-benefit">
-                        <p><?php echo !empty($productdetail) ? $productdetail['benefit'] : ''?></p>
+                    <label>好处<em class="text-red">*</em>：</label>
+                    <textarea name="content" rows="10" class="editor" id="benefit">
+                        <?php echo !empty($productdetail) ? $productdetail['benefit'] : ''?>
                     </textarea>
                 </div>
                 <div class="form-group">
@@ -63,9 +63,17 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>文件<em class="text-red">*</em>：</label>
-                    <input id="J-file" name="product_file" type="file" class="form-control" value=""/>
-                </div>     
+                    <label>普件<em class="text-red">*</em>：</label>
+                    <textarea name="content" rows="10" class="editor" id="normal">
+                        <?php echo !empty($productdetail) ? $productdetail['normal'] : ''?>
+                    </textarea>
+                </div>  
+                <div class="form-group">
+                    <label>链接技术<em class="text-red">*</em>：</label>
+                    <textarea name="content" rows="10" class="editor" id="technology">
+                        <?php echo !empty($productdetail) ? $productdetail['technology'] : ''?>
+                    </textarea>
+                </div>
             </form>
         </div>
         <div class="box-footer">
@@ -82,24 +90,25 @@
     </div>
 </div>
 <script>
-    //window.UEDITOR_HOME_URL = domain;
-    //var ue = UE.getEditor('editor');
-    ClassicEditor
-    .create( document.querySelector( '#J-content' ) )
-    .then( editor => {
-        console.log( editor );
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
-    ClassicEditor
-    .create( document.querySelector( '#J-benefit' ) )
-    .then( editor => {
-        console.log( editor );
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
+    var editor = CKEDITOR.replace( 'content' ,{
+        filebrowserImageUploadUrl : domain + '/backmanage/uploadproductimg?responseType=json',
+        height:300,
+    });
+
+    var editor = CKEDITOR.replace( 'benefit' ,{
+        filebrowserImageUploadUrl : domain + '/backmanage/uploadproductimg?responseType=json',
+        height:300,
+    });
+
+    var editor = CKEDITOR.replace( 'normal' ,{
+        filebrowserImageUploadUrl : domain + '/backmanage/uploadproductimg?responseType=json',
+        height:300,
+    });
+
+    var editor = CKEDITOR.replace( 'technology' ,{
+        filebrowserImageUploadUrl : domain + '/backmanage/uploadproductimg?responseType=json',
+        height:300,
+    });
 
     $('.J-show-img').click(function(){
         var img = $(this).attr('value');
@@ -120,12 +129,16 @@
     $('#J-save').click(function(){
         var id = $('#J-id').val(),
             title = $('#J-title').val(),
-            content = $('#J-content').val(),
-            benefit = $('#J-benefit').val();
+            content = CKEDITOR.instances.content.getData(),
+            benefit = CKEDITOR.instances.benefit.getData(),
+            normal = CKEDITOR.instances.normal.getData(),
+            technology = CKEDITOR.instances.technology.getData();
         var param = {
             'title':title,
-            'content':content,
-            'benefit':benefit
+            'content':content.replace(/"/g,"||++"),
+            'benefit':benefit.replace(/"/g,"||++"),
+            'normal':normal.replace(/"/g,"||++"),
+            'technology':technology.replace(/"/g,"||++")
         };
         if(id == ''){
             var url = domain + 'backmanage/addproduct';

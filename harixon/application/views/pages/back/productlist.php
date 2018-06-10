@@ -30,7 +30,7 @@
 							echo '<td><a href="javascript:void(0)" value="' . $value['title_pic'] . '" class="J-show-titlepic">查看</a></td>';
 							echo '<td>' . date('Y-m-d H:i:s',$value['updated']) . '</td>';
 							echo '<td>' . date('Y-m-d H:i:s',$value['created']) . '</td>';
-							echo '<td><a href="' . base_url('backmanage/productedit?id=' . $value['id']) . '">编辑</a>|<a href="javascript:void(0)" class="J-del" value="' . $value['id'] . '">删除</a></td>';
+							echo '<td><a href="' . base_url('backmanage/productedit?id=' . $value['id']) . '">编辑</a>|<a href="javascript:void(0)" class="J-del" value="' . $value['id'] . '">删除</a>|<a href="' . base_url('backmanage/productfile?id=' . $value['id']) . '" value="' . $value['id'] . '">文件</a></td>';
 						}
 					}
 				?>
@@ -64,7 +64,7 @@
 		var param = {
 			'id':id
 		}
-		confirm('确认删除该条产品？',function(){
+		sconfirm('确认删除该条产品？',function(){
 			ajaxRequest(url,param,function(obj){
 				if(obj.code == 1){
 					location.reload();

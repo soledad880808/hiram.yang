@@ -66,7 +66,7 @@
 		var param = {
 			'id':id
 		}
-		confirm('确认删除该条解决方案？',function(){
+		sconfirm('确认删除该条解决方案？',function(){
 			ajaxRequest(url,param,function(obj){
 				if(obj.code == 1){
 					location.reload();

@@ -9,9 +9,9 @@ class product_model extends Harixon_Model {
 
 	public function productlist($pageno){
 		$start = ($pageno-1)*PAGESIZE;
-		$sql = "select * from product limit {$start}," . PAGESIZE;
+		$sql = "select * from product where is_deleted=0 limit {$start}," . PAGESIZE;
 		$productlist = $this->db->query($sql)->result_array();
-		$sql = "select count(*) count from product";
+		$sql = "select count(*) count from product where is_deleted=0";
 		$total = $this->db->query($sql)->result_array();
 		return array('productlist' => $productlist,'total' => $total[0]['count']);
 	}

@@ -1,9 +1,4 @@
-<!--script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>src/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" charset="utf-8" src="<?php echo base_url();?>src/ueditor/ueditor.all.min.js"> </script>
-<script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>src/ueditor/lang/zh-cn/zh-cn.js"></script>
-<link rel="stylesheet" href="<?php echo base_url();?>dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-<script src="<?php echo base_url();?>dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script-->
-<script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>src/ckeditor5/ckeditor.js"></script>
+<script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>src/ckeditor/ckeditor.js"></script>
 <section class="content-header">
     <br/>
     <ol class="breadcrumb">
@@ -36,7 +31,7 @@
                 <div class="form-group">
                     <label>内容<em class="text-red">*</em>：</label>
                     <textarea name="content" id="editor">
-                        <p><?php echo !empty($newsdetail) ? $newsdetail['content'] : ''?></p>
+                        <?php echo !empty($newsdetail) ? $newsdetail['content'] : ''?>
                     </textarea>
                 </div>           
             </form>
@@ -50,20 +45,15 @@
 </section>
 <input id="J-id" type="hidden" value="<?php echo $id;?>">
 <script>
-    //window.UEDITOR_HOME_URL = domain;
-    //var ue = UE.getEditor('editor');
-    ClassicEditor
-    .create( document.querySelector( '#editor' ) )
-    .then( editor => {
-        console.log( editor );
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
+    var editor = CKEDITOR.replace( 'editor' ,{
+        filebrowserImageUploadUrl : domain + '/backmanage/uploadnewsimg?responseType=json',
+        height:600,
+    });
+
     $('#J-save').click(function(){
         var id = $('#J-id').val(),
             title = $('#J-title').val(),
-            content = $('#J-content').val(),
+            content = CKEDITOR.instances.editor.getData(),
             type = $('#J-type').val(),
             url = domain + 'backmanage/changenews';
         var param = {

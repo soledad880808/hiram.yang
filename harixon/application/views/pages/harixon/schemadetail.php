@@ -1,6 +1,6 @@
-		<div class="main-content news-wrapper">
-		    <p class="title"><?php echo $schemadetail['title']?></p>
-		    <p class="item"><?php echo $schemadetail['content']?></p>
+		<div class="main-content news-wrapper fixck">
+            <p class="title"><?php echo $schemadetail['title']?></p>
+            <div class="fixck"><?php echo $schemadetail['content']?></div>
 		</div>
 	</div>
 </div>

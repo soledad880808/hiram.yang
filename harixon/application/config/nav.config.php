@@ -32,7 +32,7 @@
 		array(
 			'name' => '行业解决方案',
 			'url' => 'schema/schemalist',
-			'active' => array('schemalist')
+			'active' => array('schemalist','schemadetail')
 		),
 		array(
 			'name' => '关于我们',
@@ -66,6 +66,11 @@
 			'name' => '行业解决方案',
 			'url' => 'backmanage/schemalist',
 			'active' => array('schemalist','schemaedit')
+		),
+		array(
+			'name' => '关于我们',
+			'url' => 'backmanage/aboutedit',
+			'active' => array('about')
 		)
 	)
 ?>

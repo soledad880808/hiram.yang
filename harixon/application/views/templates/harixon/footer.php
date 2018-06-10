@@ -4,7 +4,7 @@
             foreach($nav as $key => $value){
                 if(!empty($value['url'])){
                     echo '<div class="column">';
-                    echo '<h3>' . $value['name'] . '</h3>';
+                    echo '<h3><a style="color:#104A7C" href="' . base_url($value['url']) . '">' . $value['name'] . '</a></h3>';
                     if(isset($value['list'])){
                         echo '<ul class="menu">';
                         foreach($value['list'] as $k => $v){

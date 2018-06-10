@@ -88,7 +88,7 @@
 									$style = ' style="margin-top:10px"';
 								}
 								echo '<dd class="con"' . $style . '>';
-								echo '<p class="J-news" data-id="' . $value['id'] . '" style="cursor:pointer">' . $value['title'] . '</p>';
+								echo '<p class="J-news" data-type="' . $value['type'] . '" data-id="' . $value['id'] . '" style="cursor:pointer">' . $value['title'] . '</p>';
 								echo '<span class="time">' . date('Y-m-d',$value['updated']) . '</span>';
 								echo '</dd>';
 								$i++;
@@ -105,7 +105,7 @@
 									$style = ' style="margin-top:10px"';
 								}
 								echo '<dd class="con"' . $style . '>';
-								echo '<p class="J-news" data-id="' . $value['id'] . '" style="cursor:pointer">' . $value['title'] . '</p>';
+								echo '<p class="J-news" data-type="' . $value['type'] . '" data-id="' . $value['id'] . '" style="cursor:pointer">' . $value['title'] . '</p>';
 								echo '<span class="time">' . date('Y-m-d',$value['updated']) . '</span>';
 								echo '</dd>';
 								$i++;
@@ -269,7 +269,7 @@
             foreach($_nav as $key => $value){
                 if(!empty($value['url'])){
                     echo '<div class="column">';
-                    echo '<h3>' . $value['name'] . '</h3>';
+                    echo '<h3><a style="color:#104A7C" href="' . base_url($value['url']) . '">' . $value['name'] . '</a></h3>';
                     if(isset($value['list'])){
                         echo '<ul class="menu">';
                         foreach($value['list'] as $k => $v){
@@ -331,8 +331,9 @@
 	});
 
 	$('.J-news').click(function(){
-		var id = $(this).data('id');
-		location.href = '<?php echo base_url();?>news/newsdetail?id=' + id;
+		var id = $(this).data('id'),
+			type = $(this).data('type');
+			location.href = '<?php echo base_url();?>news/newsdetail?id=' + id + '&type=' + type;
 	});
 </script>
 

@@ -32,7 +32,7 @@
 							echo '<td>' . $value['typename'] . '</td>';
 							echo '<td>' . date('Y-m-d H:i:s',$value['updated']) . '</td>';
 							echo '<td>' . date('Y-m-d H:i:s',$value['created']) . '</td>';
-							echo '<td><a href="' . base_url('backmanage/newsedit?id=' . $value['id']) . '">编辑</a></td>';
+							echo '<td><a href="' . base_url('backmanage/newsedit?id=' . $value['id']) . '">编辑</a>|<a href="javascript:void(0)" class="J-del" value="' . $value['id'] . '">删除</a></td>';
 						}
 					}
 				?>
@@ -58,6 +58,23 @@
 			lock:true,
 			ok: true,
 			cancel: false
+		});
+	});
+
+	$('.J-del').click(function(){
+		var id = $(this).attr('value'),
+			url = domain + 'backmanage/delnews';
+		var param = {
+			'id':id
+		}
+		sconfirm('确认删除该条新闻？',function(){
+			ajaxRequest(url,param,function(obj){
+				if(obj.code == 1){
+					location.reload();
+				}else{
+					error(obj.desc);
+				}
+			});
 		});
 	});
 

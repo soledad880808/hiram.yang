@@ -1,4 +1,4 @@
-<script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>src/ckeditor5/ckeditor.js"></script>
+<script type="text/javascript" charset="utf-8" src="<?php echo base_url()?>src/ckeditor/ckeditor.js"></script>
 <section class="content-header">
     <br/>
     <ol class="breadcrumb">
@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <label>内容<em class="text-red">*</em>：</label>
                     <textarea name="content" id="editor">
-                        <p><?php echo !empty($schemadetail) ? $schemadetail['content'] : ''?></p>
+                        <?php echo !empty($schemadetail) ? $schemadetail['content'] : ''?>
                     </textarea>
                 </div>       
             </form>
@@ -45,16 +45,10 @@
     </div>
 </div>
 <script>
-    //window.UEDITOR_HOME_URL = domain;
-    //var ue = UE.getEditor('editor');
-    ClassicEditor
-    .create( document.querySelector( '#editor' ) )
-    .then( editor => {
-        console.log( editor );
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
+    CKEDITOR.replace( 'editor' ,{
+        filebrowserImageUploadUrl : domain + '/backmanage/uploadschemaimg',
+        height:600,
+    });
 
     $('#J-show-img').click(function(){
         var img = $(this).attr('value');
@@ -75,10 +69,10 @@
     $('#J-save').click(function(){
         var id = $('#J-id').val(),
             title = $('#J-title').val(),
-            content = $('#J-content').val();
+            content = CKEDITOR.instances.editor.getData();
         var param = {
             'title':title,
-            'content':content,
+            'content':content.replace(/"/g,"||++"),
         };
         if(id == ''){
             var url = domain + 'backmanage/addschema';

@@ -33,4 +33,17 @@ class product extends Harixon_Controller {
 		$productdetail = $this->model('product_model')->productdetail($id);
 		$this->display('productdetail',$productdetail);
 	}
+
+	public function downloadfile(){
+		$storename = $this->input->get('storename','string');
+		$filename = $this->input->get('filename','string');
+		$file_path = sprintf(IMG_PATH,'product_file');
+		$file = fopen($file_path . $storename,"rb");
+		header("Content-Type: application/octet-stream");
+		header("Accept-Ranges: bytes");
+		header("Accept-Length: ".filesize($file_path . $storename));
+		header("Content-Disposition: attachment; filename=" . $filename);
+		echo fread($file,filesize($file_path . $storename));
+		fclose($file);
+	}
 }

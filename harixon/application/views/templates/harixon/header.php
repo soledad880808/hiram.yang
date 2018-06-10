@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>css/kkpager_blue.css" />
     <script src="<?php echo base_url();?>js/jquery-2.1.3.js"></script>
     <script src="<?php echo base_url();?>js/kkpager.min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url();?>css/fixck.css" />
 </head>
 
 <body>

@@ -20,6 +20,7 @@ class about extends Harixon_Controller {
 	 */
 	public function index()
 	{
-		$this->display('about');
+		$aboutinfo = $this->model('about_model')->aboutinfo();
+		$this->display('about',$aboutinfo);
 	}
 }

@@ -1,9 +1,10 @@
 		<div class="main-content news-wrapper">
-		    <p class="title"><?php echo $newsdetail['title']?></p>
-		    <p class="item"><?php echo $newsdetail['content']?></p>
+            <p class="title"><?php echo $newsdetail['title']?></p>
+		    <div class="fixck"><?php echo $newsdetail['content']?></div>
 		</div>
 	</div>
 </div>
+
 <style>
     .news-wrapper{
         color: #888;

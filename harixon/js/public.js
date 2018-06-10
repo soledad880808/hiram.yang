@@ -6,7 +6,7 @@ function error(msg){
 	swal('',msg,'error');
 }
 
-function confirm(msg,callback){
+function sconfirm(msg,callback){
 	swal({
 		title:'',
 		text:msg,
@@ -73,55 +73,4 @@ function showLoading(flag){
 	}else{
 		$('#loading').remove();
 	}
-}
-
-function showPage(curpage,totalpage){
-	if(totalpage == 0){
-		return '';
-	}
-	curpage = parseInt(curpage);
-	totalpage = parseInt(totalpage);
-	var page = '<div class="row page_div">';
-	page += '<div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers"><ul class="pagination">';
-	if(curpage==1){
-		page += '<li class="paginate_button previous disabled"><a href="javascript:void(0)" aria-label="Previous"><span aria-hidden="true">Previous</span></a></li>';
-	}else{
-		var lastpage = curpage-1;
-		page += '<li class="paginate_button previous"><a href="javascript:void(0)" class="data-page"  data-page="' + lastpage + '" aria-label="Previous"><span aria-hidden="true">Previous</span></a></li>';
-	}
-	if(curpage <= 6){
-		var startpage = 1;
-		if(totalpage >= 10){
-			var endpage = 10;
-		}else{
-			var endpage = totalpage;
-		}
-	}else{ 
-		if(curpage >= (totalpage - 5)){
-			if(totalpage >= 10){
-				var startpage = totalpage - 9;
-			}else{
-				var startpage = 1;
-			}
-			var endpage = totalpage;
-		}else{
-			var startpage = curpage - 5;
-			var endpage = curpage + 4;
-		}
-	}
-	for(var i=startpage;i<=endpage;i++){
-		if(curpage == i){
-			page += '<li class="paginate_button active"><a href="">' + i + '</a></li>';
-		}else{
-			page += '<li class="paginate_button"><a data-page="' + i + '" class="data-page" href="javascript:void(0)">' + i + '</a></li>';
-		}
-	}
-	if(curpage == totalpage || totalpage==1){
-		page += '<li class="paginate_button next disabled"><a href="javascript:void(0)" aria-label="Next"><span aria-hidden="true">Next</span></a></li>';
-	}else{
-		var nextpage = curpage+1;
-		page += '<li class="paginate_button next"><a href="javascript:void(0)" class="data-page" data-page="' + nextpage + '" aria-label="Next"><span aria-hidden="true">Next</span></a></li>';
-	}
-	page += '</ul></div></div></div>';
-	return page;
 }

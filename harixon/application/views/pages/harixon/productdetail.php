@@ -7,12 +7,7 @@
                 <div class="right">
                     <div class="introduction-box">
                         <p>产品特性</p>
-                        <ul>
-                            <li>+传感器整体集成于液压缸内</li>
-                            <li>+非接触无磨损的测量系统</li>
-                            <li>+可调节测量范围</li>
-                            <li>+可同时输出位置和速度</li>
-                        </ul>
+                        <div class="fixck"><?php echo $productdetail['content'];?></div>
                     </div>
                 </div>
             </div>
@@ -29,29 +24,37 @@
                     </ul>
                 </div>
                 <div class="right-details">
-                    <div class="detail">
-    					<p>+传感器整体集成于液压缸内<br/>
-    					+非接触无磨损的测量系统<br/>
-    					+可调节测量范围<br/>
-    					+可同时输出位置和速度</li></p>
+                    <div class="detail fixck">
+    					<?php echo $productdetail['benefit'];?>
                     </div>
                     <div class="detail" style="display:none">
                         <p><img src="<?php echo $productdetail['material']?>" style="width:100%" alt=""></p>
                     </div>
                     <div class="detail" style="display:none">
-                        <p><img src="<?php echo $productdetail['material']?>" style="width:100%" alt=""></p>
+                        <p><img src="<?php echo $productdetail['identification']?>" style="width:100%" alt=""></p>
                     </div>
                     <div class="detail" style="display:none">
                         <p><img src="<?php echo $productdetail['software']?>" style="width:100%" alt=""></p>
                     </div>
-                    <div class="detail" style="display:none">
-                        <p>普件</p>
+                    <div class="detail fixck" style="display:none">
+                        <?php echo $productdetail['normal'];?>
+                    </div>
+                    <div class="detail fixck" style="display:none">
+                        <?php echo $productdetail['technology'];?>
                     </div>
                     <div class="detail" style="display:none">
-                        <p>接插件链接技术</p>
-                    </div>
-                    <div class="detail" style="display:none">
-                            <p>文件</p>
+                        <p>
+                        <?php
+                            if(!empty($productdetail['file'])){
+                                $file_ar = unserialize($productdetail['file']);
+                                foreach($file_ar as $key => $value){
+                                    if($value['is_deleted'] == 0){
+                                        echo '<img style="width:30px;height:30px" src=' . base_url('img/file.jpg') . '><a href="' . base_url('product/downloadfile?storename=' . $value['storename'] . '&filename='. $value['filename']) . '">' . $value['filename'] . '</a><br/>';
+                                    }  
+                                }
+                            }
+                        ?>
+                        </p>
                     </div>
 
                 </div>
