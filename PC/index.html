@@ -231,21 +231,21 @@
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
 						<div>
-							<img style="width:95%" src="img/encoder.png" alt="">
+							<img style="width:95%" src="http://www.harixon.com/img/schema/category_pic1529394895.png" alt="">
 							<h4>编码器</h4>
 							<p>运动控制应用（从工厂自动化到移动机械的控制系统）需要精确、实时地掌握机械设备物理位置信息...</p>
 						</div>
 					</div>
 					<div class="swiper-slide">
 						<div>
-							<img style="width:95%" src="img/encoder2.png" alt="">
+							<img style="width:95%" src="http://www.harixon.com/img/schema/category_pic1529394895.png" alt="">
 							<h4>直线位移传感器</h4>
 							<p>以高度现代化和自动化的生产流程来保证直线位移传感器、磁致伸缩位移传感器的精度与品质。...</p>
 						</div>
 					</div>
 					<div class="swiper-slide">
 						<div>
-							<img style="width:95%" src="img/encoder3.png" alt="">
+							<img style="width:95%" src="http://www.harixon.com/img/schema/category_pic1529394895.png" alt="">
 							<h4>拉线盒</h4>
 							<p>将拉线盒与编码器组合在一起可以精确的测量直线位移。利用编码器的多种通讯接口可与您的控制器通讯...</p>
 						</div>
@@ -364,7 +364,7 @@
 	<img class="code" src="img/liantu.png" alt="">
 </body>
 <script type="text/javascript">
-	$(window).load(function () {
+	$(function(){
 		var mySwiper = new Swiper('.banner .swiper-container', {
 			direction: 'horizontal',
 			autoplay: true,
@@ -400,7 +400,44 @@
 		},function(){
 			$(this).find('.childcontent').stop(true, true).slideUp();
 		})
-	});
+	})
+	// $(window).load(function () {
+	// 	var mySwiper = new Swiper('.banner .swiper-container', {
+	// 		direction: 'horizontal',
+	// 		autoplay: true,
+	// 		pagination: {
+	// 			el: '.swiper-container .swiper-pagination',
+	// 			clickable: true,
+	// 		},
+	// 		navigation: {
+	// 			nextEl: '.swiper-container .swiper-button-next',
+	// 			prevEl: '.swiper-container .swiper-button-prev',
+	// 			hideOnClick: true,
+	// 		},
+	// 	})
+	// 	var arr = ['工业产品', '行业解决方案']
+	// 	var mySwiper2 = new Swiper('.whoChoose .swiper-container', {
+	// 		slidesPerView: 3,
+	// 		spaceBetween: 30,
+	// 		slidesPerGroup: 3,
+	// 		loop: true,
+	// 		loopFillGroupWithBlank: true,
+	// 		pagination: {
+	// 			el: '.whoChoose .swiper-pagination',
+	// 			clickable: true,
+	// 			renderBullet: function (index, className) {
+	// 				return '<span class="' + className + '">' + arr[index] + '</span>';
+	// 			}
+	// 		},
+	// 	})
+	
+	
+	// 	$(".nav li").hover(function(){
+	// 		$(this).find('.childcontent').stop(true, true).slideDown();
+	// 	},function(){
+	// 		$(this).find('.childcontent').stop(true, true).slideUp();
+	// 	})
+	// });
 </script>
 
 </html>
