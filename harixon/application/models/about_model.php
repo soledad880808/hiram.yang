@@ -13,4 +13,11 @@ class about_model extends Harixon_Model {
 		$aboutinfo = !empty($aboutinfo) ? current($aboutinfo) : $aboutinfo;
 		return array('aboutinfo' => $aboutinfo);
 	}
+
+	public function provisioninfo(){
+		$sql = "select * from provision where id=1";
+		$provisioninfo = $this->db->query($sql)->result_array();
+		$provisioninfo = !empty($provisioninfo) ? current($provisioninfo) : $provisioninfo;
+		return array('provisioninfo' => $provisioninfo);
+	}
 }

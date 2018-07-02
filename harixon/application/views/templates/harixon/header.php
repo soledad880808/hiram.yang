@@ -31,13 +31,26 @@
                         }else{
                             echo '<li><a href="' . base_url($value['url']) . '">' . $value['name'] . '</a>';
                         }
-                        if(isset($value['list'])){
+                        if(isset($value['list']) || isset($value['has_db'])){
                             echo '<div class="childcontent" style="display: none">';
                             echo '<div class="megacol" style="width:200px"><ul>';
-                            foreach($value['list'] as $k => $v){
-                                echo '<li class="mega"><a href="' . base_url($v['url']) . '">' . $v['name'] . '</a></li>';
-                            }
-                            echo '</ul></div></div>';
+                            if(!isset($value['has_db'])){    
+                                foreach($value['list'] as $k => $v){
+                                    echo '<li class="mega"><a href="' . base_url($v['url']) . '">' . $v['name'] . '</a></li>';
+                                }
+                            }else{
+                                if($value['name'] == '产品中心'){
+                                    $list = $_product_category;
+                                    $url = 'product/productlist';
+                                }elseif($value['name'] == '行业解决方案'){
+                                    $list = $_schema_category;
+                                    $url = 'schema/schemalist';
+                                }
+                                foreach($list as $k => $v){
+                                    echo '<li class="mega"><a href="' . base_url($url) . '?type=' . $k . '">' . $v . '</a></li>';
+                                }
+                            } 
+                            echo '</ul></div></div>';                      
                         }
                         echo '</li>';
                     }

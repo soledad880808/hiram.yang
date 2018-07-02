@@ -1,6 +1,6 @@
 <section class="content-header">
 	<h1>
-	    <small>行业解决方案列表</small>
+	    <small>行业解决方案分组</small>
 	</h1>
 </section>
 <section class="content">
@@ -13,28 +13,22 @@
 				<thead>
 					<tr>
 						<th>id</th>
-						<th>标题</th>
-						<th>标题图片</th>
-						<th>类型</th>
-						<th>内容</th>
-						<th>更新时间</th>
-						<th>创建时间</th>
+						<th>分组名称</th>
+						<th>排序</th>
+						<th>是否首页推荐</th>
 						<th>操作</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?PHP
-					if(!empty($schemalist)){
-						foreach($schemalist as $key => $value){
+					if(!empty($schemacategory)){
+						foreach($schemacategory as $key => $value){
 							echo '<tr>';
 							echo '<td>' . $value['id'] . '</td>';
-							echo '<td>' . $value['title'] . '</td>';
-							echo '<td><a href="javascript:void(0)" value="' . $value['title_pic'] . '" class="J-show-titlepic">查看</a></td>';
-							echo '<td>' . $value['typename'] . '</td>';
-							echo '<td><a href="' . base_url('backmanage/schemacontent?id=' . $value['id']) . '" >查看</a></td>';
-							echo '<td>' . date('Y-m-d H:i:s',$value['updated']) . '</td>';
-							echo '<td>' . date('Y-m-d H:i:s',$value['created']) . '</td>';
-							echo '<td><a href="' . base_url('backmanage/schemaedit?id=' . $value['id']) . '">编辑</a>|<a href="javascript:void(0)" class="J-del" value="' . $value['id'] . '">删除</a></td>';
+							echo '<td>' . $value['name'] . '</td>';
+							echo '<td>' . $value['order'] . '</td>';
+							echo '<td>' . ($value['is_index'] == 1 ? '是' : '否') . '</td>';
+							echo '<td><a href="' . base_url('backmanage/schemacategoryedit?id=' . $value['id']) . '">编辑</a>|<a href="javascript:void(0)" class="J-del" value="' . $value['id'] . '">删除</a></td>';
 						}
 					}
 				?>
@@ -64,11 +58,11 @@
 
 	$('.J-del').click(function(){
 		var id = $(this).attr('value'),
-			url = domain + 'backmanage/delschema';
+			url = domain + 'backmanage/delschemacategory';
 		var param = {
 			'id':id
 		}
-		sconfirm('确认删除该条解决方案？',function(){
+		sconfirm('确认删除该条行业解决方案分组？',function(){
 			ajaxRequest(url,param,function(obj){
 				if(obj.code == 1){
 					location.reload();
@@ -80,6 +74,6 @@
 	});
 
 	$('#J-add').click(function(){
-		location.href = domain + 'backmanage/schemaedit';
+		location.href = domain + 'backmanage/schemacategoryedit';
 	});
 </script>

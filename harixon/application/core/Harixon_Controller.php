@@ -30,6 +30,8 @@ class Harixon_Controller extends CI_Controller{
 	public function display($template=null,$data=array()){
         $this->load->config('nav.config');
         $data['nav'] = $this->config->item('nav');
+    $data['_product_category'] = $this->model('backmanage_model')->productcategory_config();
+    $data['_schema_category'] = $this->model('backmanage_model')->schemacategory_config();
 		$this->load->view('templates/harixon/header',$data);
 		$this->load->view('templates/harixon/left');
         $this->load->view('pages/harixon/' . $template);

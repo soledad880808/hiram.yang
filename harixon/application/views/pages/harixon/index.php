@@ -3,6 +3,7 @@
 
 <head>
 	<meta content="text/html;charset=utf-8" http-equiv="content-type">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<title>海汭森（上海）工程技术有限公司【官网】</title>
 	<meta name="keywords" content="海汭森,线性传感器" />
 	<meta name="description" content="海汭森（上海）工程技术有限公司，主要经营技术，注册资本万元，公司是建筑工程业的知名企业，公司坚持诚信、互利，为客户提供最好的服务和最实惠的价格，我公司的办公地址在中国（上海）自由贸易试验区郭守敬路351号2号楼A654-27室，如果您对我们的产品服务有兴趣，请在线咨询或者拨打我们的电话，联系电话是。热诚欢迎各界朋友前来参观、洽谈业务。"
@@ -27,12 +28,25 @@
 					}else{
 						echo '<li><a href="' . base_url($value['url']) . '">' . $value['name'] . '</a>';
 					}
-					if(isset($value['list'])){
+					if(isset($value['list']) || isset($value['has_db'])){
                         echo '<div class="childcontent" style="display: none">';
                         echo '<div class="megacol" style="width:200px"><ul>';
-                        foreach($value['list'] as $k => $v){
-                            echo '<li class="mega"><a href="' . base_url($v['url']) . '">' . $v['name'] . '</a></li>';
-                        }
+                        if(!isset($value['has_db'])){    
+                                foreach($value['list'] as $k => $v){
+                                    echo '<li class="mega"><a href="' . base_url($v['url']) . '">' . $v['name'] . '</a></li>';
+                                }
+                            }else{
+                                if($value['name'] == '产品中心'){
+                                    $list = $_product_category;
+                                    $url = 'product/productlist';
+                                }elseif($value['name'] == '行业解决方案'){
+                                    $list = $_schema_category;
+                                    $url = 'schema/schemalist';
+                                }
+                                foreach($list as $k => $v){
+                                    echo '<li class="mega"><a href="' . base_url($url) . '?type=' . $k . '">' . $v . '</a></li>';
+                                }
+                            }
                         echo '</ul></div></div>';
                     }
                     echo '</li>';
@@ -89,7 +103,7 @@
 								}
 								echo '<dd class="con"' . $style . '>';
 								echo '<p class="J-news" data-type="' . $value['type'] . '" data-id="' . $value['id'] . '" style="cursor:pointer">' . $value['title'] . '</p>';
-								echo '<span class="time">' . date('Y-m-d',$value['updated']) . '</span>';
+								echo '<span class="time">' . (!empty($value['published']) ? date('Y-m-d',$value['published']) : date('Y-m-d')) . '</span>';
 								echo '</dd>';
 								$i++;
 							}
@@ -106,7 +120,7 @@
 								}
 								echo '<dd class="con"' . $style . '>';
 								echo '<p class="J-news" data-type="' . $value['type'] . '" data-id="' . $value['id'] . '" style="cursor:pointer">' . $value['title'] . '</p>';
-								echo '<span class="time">' . date('Y-m-d',$value['updated']) . '</span>';
+								echo '<span class="time">' . (!empty($value['published']) ? date('Y-m-d',$value['published']) : date('Y-m-d')) . '</span>';
 								echo '</dd>';
 								$i++;
 							}
@@ -137,75 +151,16 @@
 				</p>
 				<div class="product-list">
 					<ul class="clearfix">
-						<li>
-							<div class="box">
-								<a class="timage" href="">
-									<img src="<?php echo base_url();?>img/steel.jpg" alt="">
-								</a>
-								<h4 class="title">
-									<a href="">钢铁工业</a>
-								</h4>
-								<p class="tjustify">冶金行业（尤其是钢铁行业）仍是当今经济中的重要行业。钢铁仍然是满足质量和韧性最高要求的多用途高科技材...
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="box">
-								<a class="timage" href="">
-									<img src="<?php echo base_url();?>img/Storage.png" alt="">
-								</a>
-								<h4 class="title">
-									<a href="">物流和仓储</a>
-								</h4>
-								<p class="tjustify">仓储物流，就是利用自建或租赁库房、场地、储存、保管、装卸搬运、配送货物。传统的仓储定义是从物资储备的...</p>
-							</div>
-						</li>
-						<li>
-							<div class="box">
-								<a class="timage" href="">
-									<img src="<?php echo base_url();?>img/wind.jpg" alt="">
-								</a>
-								<h4 class="title">
-									<a href="">风能</a>
-								</h4>
-								<p class="tjustify">风力发电是指把风的动能转为电能。风是一种没有公害的能源，利用风力发电非常环保，且能够产生的电能非常巨...</p>
-							</div>
-						</li>
-					</ul>
-					<ul class="clearfix">
-						<li>
-							<div class="box">
-								<a class="timage" href="">
-									<img src="<?php echo base_url();?>img/car.jpg" alt="">
-								</a>
-								<h4 class="title">
-									<a href="">汽车工业</a>
-								</h4>
-								<p class="tjustify">生产各种汽车主机及部分零配件或进行装配的工业部门。主要包括生产发动机、底盘和车体等主要部件，并组装...</p>
-							</div>
-						</li>
-						<li>
-							<div class="box">
-								<a class="timage" href="">
-									<img src="<?php echo base_url();?>img/ports.png" alt="">
-								</a>
-								<h4 class="title">
-									<a href="">港口</a>
-								</h4>
-								<p class="tjustify">港口是位于河、海，湖，水库沿岸，有水陆城及各种设施。供泊船进出停泊装卸货物...</p>
-							</div>
-						</li>
-						<li>
-							<div class="box">
-								<a class="timage" href="">
-									<img src="<?php echo base_url();?>img/machine.png" alt="">
-								</a>
-								<h4 class="title">
-									<a href="">工程机械</a>
-								</h4>
-								<p class="tjustify">工程机械是装备工业的重要组成部分。概括地说，凡土石方施工工程、路面建设与养护、流动式起重装...</p>
-							</div>
-						</li>
+					<?php
+						if(!empty($_schema_index)){
+							foreach($_schema_index as $key => $value){
+								echo '<li><div class="box">';
+								echo '<a class="timage" href="' . base_url('schema/schemalist?type=' . $value['id']) . '"><img src="' . $value['pic'] . '" alt=""></a>';
+								echo '<h4 class="title"><a href="">' . $value['name'] . '</a></h4>';
+								echo '<p class="tjustify">' . $value['describe'] . '</p></div></li>';
+							}
+						}
+					?>
 					</ul>
 				</div>
 			</div>
@@ -215,48 +170,29 @@
 			<h3 class="mt20">推荐产品</h3>
 			<div class="swiper-container wrapper">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<div>
-							<img style="width:95%" src="<?php echo base_url();?>img/encoder.png" alt="">
-							<h4>编码器</h4>
-							<p>运动控制应用（从工厂自动化到移动机械的控制系统）需要精确、实时地掌握机械设备物理位置信息...</p>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div>
-							<img style="width:95%" src="<?php echo base_url();?>img/encoder2.png" alt="">
-							<h4>直线位移传感器</h4>
-							<p>以高度现代化和自动化的生产流程来保证直线位移传感器、磁致伸缩位移传感器的精度与品质。...</p>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div>
-							<img style="width:95%" src="<?php echo base_url();?>img/encoder3.png" alt="">
-							<h4>拉线盒</h4>
-							<p>将拉线盒与编码器组合在一起可以精确的测量直线位移。利用编码器的多种通讯接口可与您的控制器通讯...</p>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div>
-							<img style="width:95%" src="<?php echo base_url();?>img/steel.jpg" alt="">
-							<h4>钢铁工业</h4>
-							<p>冶金行业（尤其是钢铁行业）仍是当今经济中的重要行业。钢铁仍然是满足质量和韧性最高要求的多用途高科技材...</p>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div>
-							<img style="width:95%" src="<?php echo base_url();?>img/car.jpg" alt="">
-							<h4>汽车工业</h4>
-							<p>生产各种汽车主机及部分零配件或进行装配的工业部门。主要包括生产发动机、底盘和车体等主要部件，并组装...</p>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div>
-							<img style="width:95%" src="<?php echo base_url();?>img/ports.png" alt="">
-							<h4>港口</h4>
-							<p>港口是位于河、海，湖，水库沿岸，有水陆城及各种设施。供泊船进出停泊装卸货物...</p>
-						</div>
-					</div>
+				<?php
+					if(!empty($_product_index)){
+						foreach($_product_index as $key => $value){
+							echo '<div class="swiper-slide"><div>';
+							echo '<img style="width:95%" src="' . $value['pic'] . '" alt="">';
+							echo '<h4>' . $value['name'] . '</h4>';
+							echo '<p>' . $value['describe'] . '</p></div></div>';
+						}
+					}
+					if(!empty($_schema_index)){
+						$i = 0;
+						foreach($_schema_index as $key => $value){
+							if($i == 3){
+								break;
+							}
+							echo '<div class="swiper-slide"><div>';
+							echo '<img style="width:95%" src="' . $value['pic'] . '" alt="">';
+							echo '<h4>' . $value['name'] . '</h4>';
+							echo '<p>' . $value['describe'] . '</p></div></div>';
+							$i++;
+						}
+					}
+				?>
 				</div>
 
 			</div>
@@ -270,12 +206,27 @@
                 if(!empty($value['url'])){
                     echo '<div class="column">';
                     echo '<h3><a style="color:#104A7C" href="' . base_url($value['url']) . '">' . $value['name'] . '</a></h3>';
-                    if(isset($value['list'])){
+                    if(isset($value['list']) || isset($value['has_db'])){
                         echo '<ul class="menu">';
-                        foreach($value['list'] as $k => $v){
-                            echo '<li class="item">';
-                            echo '<a href="' . base_url($v['url']) . '">' . $v['name'] . '</a>';
-                            echo '</li>';
+                        if(!isset($value['has_db'])){
+                            foreach($value['list'] as $k => $v){
+                                echo '<li class="item">';
+                                echo '<a href="' . base_url($v['url']) . '">' . $v['name'] . '</a>';
+                                echo '</li>';
+                            }
+                        }else{
+                             if($value['name'] == '产品中心'){
+                                $list = $_product_category;
+                                $url = 'product/productlist';
+                            }elseif($value['name'] == '行业解决方案'){
+                                $list = $_schema_category;
+                                $url = 'schema/schemalist';
+                            }
+                            foreach($list as $k => $v){
+                                echo '<li class="item">';
+                                echo '<a href="' . base_url($url) . '?type=' . $k . '">' . $v . '</a>';
+                                echo '</li>';
+                            }
                         }
                         echo '</ul>';
                     }

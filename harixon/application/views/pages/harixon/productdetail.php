@@ -1,7 +1,7 @@
         <div class="main-content">
             <div class="product-header">
                 <div class="left">
-                    <h1>LMR 48 SSI 直线位移传感器</h1>
+                    <h1><?php echo $productdetail['title'];?></h1>
                     <img src="<?php echo $productdetail['title_pic']?>" alt="">
                 </div>
                 <div class="right">

@@ -15,6 +15,18 @@
                     <input id="J-title" type="text" class="form-control" value="<?php echo !empty($schemadetail) ? $schemadetail['title'] : '';?>"/>
                 </div>
                 <div class="form-group">
+                    <label>作者<em class="text-red">*</em>：</label>
+                    <input id="J-creator" type="text" class="form-control" value="<?php echo !empty($schemadetail) ? $schemadetail['creator'] : '';?>"/>
+                </div>
+                <div class="form-group">
+                    <label>版本<em class="text-red">*</em>：</label>
+                    <input id="J-version" type="text" class="form-control" value="<?php echo !empty($schemadetail) ? $schemadetail['version'] : '';?>"/>
+                </div>
+                <div class="form-group">
+                    <label>发布时间<em class="text-red">*</em>：</label>
+                    <input id="J-published" type="text" class="form-control" value="<?php echo !empty($schemadetail['published']) ? date('Y-m-d H:i:s',$schemadetail['published']) : '';?>"/>
+                </div>
+                <div class="form-group">
                     <label>标题图片<em class="text-red">*</em>：</label>
                     <div class="input-group">
                         <input id="J-titlepic" name="title_pic" type="file" class="form-control" value=""/>
@@ -22,6 +34,22 @@
                             <button class="btn btn-info btn-flat" id="J-show-img" value="<?php echo !empty($schemadetail) ? $schemadetail['title_pic'] : '';?>" type="button">预览</button>
                         </span>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label>类型<em class="text-red">*</em>：</label>
+                    <select id="J-type" class="form-control">
+                    <?php
+                        if(!empty($category_conf)){
+                            foreach($category_conf as $key => $value){
+                                if(!empty($schemadetail) && $schemadetail['type'] == $key){
+                                    echo '<option value="' . $key . '"" selected>' . $value . '</option>';
+                                }else{
+                                    echo '<option value="' . $key . '"">' . $value . '</option>';
+                                }
+                            }
+                        }
+                    ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>内容<em class="text-red">*</em>：</label>
@@ -45,6 +73,10 @@
     </div>
 </div>
 <script>
+    $(function(){
+        $('#J-published').datepicker({format:'yyyy-mm-dd'});
+    });
+
     CKEDITOR.replace( 'editor' ,{
         filebrowserImageUploadUrl : domain + '/backmanage/uploadschemaimg',
         height:600,
@@ -68,10 +100,18 @@
 
     $('#J-save').click(function(){
         var id = $('#J-id').val(),
+            creator = $('#J-creator').val(),
+            version = $('#J-version').val(),
+            published = $('#J-published').val(),
             title = $('#J-title').val(),
+            type = $('#J-type').val(),
             content = CKEDITOR.instances.editor.getData();
         var param = {
+            'creator':creator,
+            'version':version,
+            'published':published,
             'title':title,
+            'type':type,
             'content':content.replace(/"/g,"||++"),
         };
         if(id == ''){

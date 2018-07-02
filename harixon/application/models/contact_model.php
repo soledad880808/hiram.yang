@@ -21,4 +21,11 @@ class contact_model extends Harixon_Model {
 		}
 		return array('contactinfo' => $contactinfo);
 	}
+
+	public function joininfo(){
+		$sql = "select * from `join` where id=1";
+		$joininfo = $this->db->query($sql)->result_array();
+		$joininfo = !empty($joininfo) ? current($joininfo) : $joininfo;
+		return array('joininfo' => $joininfo);
+	}
 }
