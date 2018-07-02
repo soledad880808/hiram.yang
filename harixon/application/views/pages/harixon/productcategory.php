@@ -1,12 +1,20 @@
         <div class="main-content product-list">
-            <ul>
             <?php
-                foreach($schemalist as $key => $value){
-                    echo '<li><div>';
-                    echo '<a href="' . base_url('schema/schemadetail?type=' . $type . '&id=' . $value['id']) . '">';
-                    echo '<img src="' . $value['title_pic'] . '">';
-                    echo '<p>' . $value['title'] . '</p>';
-                    echo '</a></div></li>';
+                $i = 0;
+                foreach($categorylist as $key => $value){
+                    if($i%3 == 0){
+                        echo '<ul class="clearfix">';
+                    }
+                    echo '<li><div class="box">';
+                    echo '<a class="timage" href="' . base_url('product/productlist?type=' . $value['id']) . '">';
+                    echo '<img src="' . $value['pic'] . '"></a>';
+                    echo '<h4 class="title"><p>' . $value['name'] . '</p></h4>';
+                    echo '<p class="tjustify">' . $value['describe'] . '</p>';
+                    echo '</div></li>';
+                    if($i%3 == 2){
+                        echo '</ul>';
+                    }
+                    $i++;
                 }
             ?>
             </ul>
@@ -19,38 +27,32 @@
 <input type="hidden" id="pagetotal" value="<?php echo $pagetotal?>">
 <style>
     .product-list {
-        color: #888;
+        margin-top: 10px;
     }
-
-    .product-list ul li {
-        float: left;
-        width: 33.3333%;
-        box-sizing: border-box;
-        padding-right: 10px;
-        margin-bottom: 20px;
-    }
-
-    .product-list ul li img {
-        width: 90%;
-        height: 130px;
-        background: url('http://lase.de/templates/lase/images/stripline.png') 0 0 repeat;
-        padding: 7px;
-    }
-
-    .product-list ul li a {
-        display: block;
-        overflow: hidden;
-        font-size: 16px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        color: #104A7C;
-        text-align: center;
-    }
-    .product-list ul li a:hover{
-        opacity: .8;
-    }
-    .product-list ul li p{
+    .tjustify {
         padding-top: 10px;
+        color: #888;
+        line-height: 22px;
+    }
+    .product-list ul li {
+        display: block;
+        float: left;
+        width: 33.33333%;
+    }
+    .box{
+        padding:5px 20px 30px 0;
+    }
+    .timage img {
+        width: 100%;
+        height: 105px;
+        display: block;
+        background: url(../img/bg-slider-bottom.png) 0 0 repeat;
+        padding: 7px;
+        margin: 0 0 15px 0;
+    }
+    .title{
+        font-size: 20px;
+        color: #104A7C;
     }
 </style>
 <script>

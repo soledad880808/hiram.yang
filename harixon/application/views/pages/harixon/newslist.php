@@ -2,7 +2,7 @@
             <ul>
             <?php
                 foreach($newslist as $key => $value){
-                    echo '<li><i class="icon"></i><a href="' . base_url('news/newsdetail?id=' . $value['id'] . '&type=' . $value['type']) . '">' . $value['title'] . '</a><span class="time">' . date('Y-m-d',$value['updated']) . '</span></li>';
+                    echo '<li><i class="icon"></i><a href="' . base_url('news/newsdetail?id=' . $value['id'] . '&type=' . $value['type']) . '">' . $value['title'] . '</a><span class="time">' . (!empty($value['published']) ? date('Y-m-d',$value['published']) : date('Y-m-d')) . '</span></li>';
                 }
             ?>
             </ul>

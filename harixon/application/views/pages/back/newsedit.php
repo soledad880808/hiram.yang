@@ -14,7 +14,7 @@
                     <label>标题<em class="text-red">*</em>：</label>
                     <input id="J-title" type="text" class="form-control" value="<?php echo !empty($newsdetail) ? $newsdetail['title'] : '';?>"/>
                 </div>
-                <div>
+                <div class="form-group">
                     <label>类型<em class="text-red">*</em>：</label>
                     <select id="J-type" class="form-control">
                     <?php
@@ -27,6 +27,10 @@
                         }
                     ?>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label>发布时间<em class="text-red">*</em>：</label>
+                    <input id="J-published" type="text" class="form-control" value="<?php echo !empty($newsdetail['published']) ? date('Y-m-d',$newsdetail['published']) : '';?>"/>
                 </div>
                 <div class="form-group">
                     <label>内容<em class="text-red">*</em>：</label>
@@ -45,6 +49,9 @@
 </section>
 <input id="J-id" type="hidden" value="<?php echo $id;?>">
 <script>
+    $(function(){
+        $('#J-published').datepicker({format:'yyyy-mm-dd'});
+    });
     var editor = CKEDITOR.replace( 'editor' ,{
         filebrowserImageUploadUrl : domain + '/backmanage/uploadnewsimg?responseType=json',
         height:600,
@@ -55,12 +62,14 @@
             title = $('#J-title').val(),
             content = CKEDITOR.instances.editor.getData(),
             type = $('#J-type').val(),
+            published = $('#J-published').val(),
             url = domain + 'backmanage/changenews';
         var param = {
             'id':id,
             'title':title,
             'content':content,
-            'type':type
+            'type':type,
+            'published':published
         };
         ajaxRequest(url,param,function(obj){
             if(obj.code == 1){

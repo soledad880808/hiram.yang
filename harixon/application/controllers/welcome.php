@@ -22,10 +22,14 @@ class welcome extends Harixon_Controller {
 	{
 		$this->load->config('nav.config');
 		$data['_nav'] = $this->config->item('nav');
+		$data['_product_category'] = $this->model('backmanage_model')->productcategory_config();
+		$data['_schema_category'] = $this->model('backmanage_model')->schemacategory_config();
 		$newslist = $this->model('news_model')->newslist(1,1,3);
 		$data['company_newslist'] = $newslist['newslist'];
 		$newslist = $this->model('news_model')->newslist(2,1,3);
 		$data['industry_newslist']= $newslist['newslist'];
+		$data['_product_index'] = $this->model('product_model')->productcategory_index();
+		$data['_schema_index'] = $this->model('schema_model')->schemacategory_index();
 		$this->load->view('pages/harixon/index',$data);
 	}
 }

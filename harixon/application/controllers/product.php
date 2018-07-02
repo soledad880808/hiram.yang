@@ -18,12 +18,23 @@ class product extends Harixon_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function productlist()
-	{
+	public function productcategory(){
 		$pageno = $this->input->get('pageno');
 		$pageno = !empty($pageno) ? $pageno : 1;
-		$productlist = $this->model('product_model')->productlist($pageno);
+		$categorylist = $this->model('product_model')->categorylist($pageno);
+		$categorylist['pageno'] = $pageno;
+		$categorylist['pagetotal'] = ceil($categorylist['total']/PAGESIZE);
+		$this->display('productcategory',$categorylist);
+	}
+
+	public function productlist()
+	{
+		$type = qp('type','int','1');
+		$pageno = $this->input->get('pageno');
+		$pageno = !empty($pageno) ? $pageno : 1;
+		$productlist = $this->model('product_model')->productlist($type,$pageno);
 		$productlist['pageno'] = $pageno;
+		$productlist['type'] = $type;
 		$productlist['pagetotal'] = ceil($productlist['total']/PAGESIZE);
 		$this->display('productlist',$productlist);
 	}

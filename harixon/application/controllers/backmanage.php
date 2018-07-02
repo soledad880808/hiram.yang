@@ -54,10 +54,12 @@ class backmanage extends Harixon_Controller {
 		$title = $this->input->post('title');
 		$content = $this->input->post('content');
 		$type = $this->input->post('type');
+		$published = $this->input->post('published');
 		$param = array(
 			'title' => $title,
 			'content' => $content,
-			'type' => $type
+			'type' => $type,
+			'published' => strtotime($published . ' 00:00:00')
 		);
 		if(!empty($id)){
 			$data = $this->model('backmanage_model')->updatenews($id,$param);
@@ -86,11 +88,6 @@ class backmanage extends Harixon_Controller {
 		$this->backdisplay('contactedit',$contactinfo);
 	}
 
-	public function aboutedit(){
-		$aboutinfo = $this->model('backmanage_model')->aboutinfo();
-		$this->backdisplay('aboutedit',$aboutinfo);
-	}
-
 	public function changecontact(){
 		$coname = $this->input->post('coname');
 		$address = $this->input->post('address');
@@ -102,9 +99,121 @@ class backmanage extends Harixon_Controller {
 		echo json_encode($result);
 	}
 
+	public function aboutedit(){
+		$aboutinfo = $this->model('backmanage_model')->aboutinfo();
+		$this->backdisplay('aboutedit',$aboutinfo);
+	}
+
 	public function changeabout(){
 		$content = $this->input->post('content');
 		$result = $this->model('backmanage_model')->changeabout($content);
+		echo json_encode($result);
+	}
+
+	public function provisionedit(){
+		$provisioninfo = $this->model('backmanage_model')->provisioninfo();
+		$this->backdisplay('provisionedit',$provisioninfo);
+	}
+
+	public function changeprovision(){
+		$content = $this->input->post('content');
+		$result = $this->model('backmanage_model')->changeprovision($content);
+		echo json_encode($result);
+	}
+
+	public function joinedit(){
+		$joininfo = $this->model('backmanage_model')->joininfo();
+		$this->backdisplay('joinedit',$joininfo);
+	}
+
+	public function changejoin(){
+		$content = $this->input->post('content');
+		$result = $this->model('backmanage_model')->changejoin($content);
+		echo json_encode($result);
+	}
+
+	public function schemacategory(){
+		$pageno = $this->input->get('pageno');
+		$pageno = !empty($pageno) ? $pageno : 1;
+		$schemacategory = $this->model('backmanage_model')->schemacategory($pageno);
+		$schemacategory['showpage'] = showpage($pageno,PAGESIZE,$schemacategory['total']);
+		$this->backdisplay('schemacategory',$schemacategory);
+	}
+
+	public function schemacategoryedit(){
+		$id = $this->input->get('id');
+		if(empty($id)){
+			$schemadetail = array();
+		}else{
+			$schemadetail = $this->model('backmanage_model')->schemacategory_id($id);
+		}
+		$schemadetail['id'] = $id;
+		$this->backdisplay('schemacategoryedit',$schemadetail);
+	}
+
+	public function addschemacategory(){
+		$order = $this->input->post('order');
+		$name = $this->input->post('name');
+		$describe = $this->input->post('describe');
+		$is_index = $this->input->post('is_index');
+		$upload_result = $this->model('backmanage_model')->uploadimg('category_pic','schema');
+		if($upload_result){
+			$param = array(
+				'order' => $order,
+				'name' => $name,
+				'describe' => $describe,
+				'is_index' => $is_index,
+				'pic' => $upload_result
+			);
+			if($this->model('backmanage_model')->insertschemacategory($param)){
+				$result = array('code' => 1);
+			}else{
+				$result = array('code' => 0,'desc' => '添加失败');
+			}
+		}else{
+			$result = array('code' => 0,'desc' => '上传失败');
+		}
+		echo json_encode($result);
+	}
+
+	public function updateschemacategory(){
+		$id = $this->input->post('id');
+		$order = $this->input->post('order');
+		$name = $this->input->post('name');
+		$describe = $this->input->post('describe');
+		$is_index = $this->input->post('is_index');
+		$upload_result = false;
+		if(!empty($_FILES['category_pic']['name'])){
+			$upload_result = $this->model('backmanage_model')->uploadimg('category_pic','schema');
+		}
+		$param = array(
+				'order' => $order,
+				'name' => $name,
+				'describe' => $describe,
+				'is_index' => $is_index,
+			);
+		if($upload_result){
+			$param['pic'] = $upload_result;
+		}
+		if($this->model('backmanage_model')->updateschemacategory($id,$param)){
+			$result = array('code' => 1,'desc' => '编辑成功');
+		}else{
+			$result = array('code' => 0,'desc' => '编辑失败');
+		}
+		echo json_encode($result);
+	}
+
+	public function delschemacategory(){
+		$id = $this->input->post('id');
+		$param = array(
+			'is_deleted' => 1,
+			'updated' => time()
+		);
+		if($this->model('backmanage_model')->updateschemacategory($id,$param)){
+			$result = array('code' => 1);
+		}else{
+			$result = array('code' => 0,'desc' => '删除失败');
+		}
 		echo json_encode($result);
 	}
 
@@ -124,17 +233,26 @@ class backmanage extends Harixon_Controller {
 			$schemadetail = $this->model('backmanage_model')->schemadetail_id($id);
 		}
 		$schemadetail['id'] = $id;
+		$schemadetail['category_conf'] = $this->model('backmanage_model')->schemacategory_config();
 		$this->backdisplay('schemaedit',$schemadetail);
 	}
 
 	public function addschema(){
+		$creator = $this->input->post('creator');
+		$version = $this->input->post('version');
+		$published = $this->input->post('published');
 		$title = $this->input->post('title');
+		$type = $this->input->post('type');
 		$content = $this->input->post('content');
 		$content = str_replace('||++', '"', $content);
 		$upload_result = $this->model('backmanage_model')->uploadimg('title_pic','schema');
 		if($upload_result){
 			$param = array(
+				'creator' => $creator,
+				'version' => $version,
+				'published' => !empty($published) ? strtotime($published) : 0,
 				'title' => $title,
+				'type' => $type,
 				'content' => $content,
 				'title_pic' => $upload_result
 			);
@@ -151,6 +269,10 @@ class backmanage extends Harixon_Controller {
 
 	public function updateschema(){
 		$id = $this->input->post('id');
+		$creator = $this->input->post('creator');
+		$version = $this->input->post('version');
+		$published = $this->input->post('published');
+		$type = $this->input->post('type');
 		$title = $this->input->post('title');
 		$content = $this->input->post('content');
 		$content = str_replace('||++', '"', $content);
@@ -159,6 +281,10 @@ class backmanage extends Harixon_Controller {
 			$upload_result = $this->model('backmanage_model')->uploadimg('title_pic','schema');
 		}
 		$param = array(
+			'creator' => $creator,
+			'version' => $version,
+			'published' => !empty($published) ? strtotime($published) : 0,
+			'type' => $type,
 			'title' => $title,
 			'content' => $content
 		);
@@ -194,6 +320,91 @@ class backmanage extends Harixon_Controller {
 		}
 		$schemacontent = $this->model('backmanage_model')->schemadetail_id($id);
 		$this->backdisplay('schemacontent',$schemacontent);
+	}
+
+	public function productcategory(){
+		$pageno = $this->input->get('pageno');
+		$pageno = !empty($pageno) ? $pageno : 1;
+		$productcategory = $this->model('backmanage_model')->productcategory($pageno);
+		$productcategory['showpage'] = showpage($pageno,PAGESIZE,$productcategory['total']);
+		$this->backdisplay('productcategory',$productcategory);
+	}
+
+	public function productcategoryedit(){
+		$id = $this->input->get('id');
+		if(empty($id)){
+			$categorydetail = array();
+		}else{
+			$categorydetail = $this->model('backmanage_model')->productcategory_id($id);
+		}
+		$categorydetail['id'] = $id;
+		$this->backdisplay('productcategoryedit',$categorydetail);
+	}
+
+	public function addproductcategory(){
+		$order = $this->input->post('order');
+		$name = $this->input->post('name');
+		$describe = $this->input->post('describe');
+		$is_index = $this->input->post('is_index');
+		$upload_result = $this->model('backmanage_model')->uploadimg('category_pic','product');
+		if($upload_result){
+			$param = array(
+				'order' => $order,
+				'name' => $name,
+				'describe' => $describe,
+				'is_index' => $is_index,
+				'pic' => $upload_result
+			);
+			if($this->model('backmanage_model')->insertproductcategory($param)){
+				$result = array('code' => 1);
+			}else{
+				$result = array('code' => 0,'desc' => '添加失败');
+			}
+		}else{
+			$result = array('code' => 0,'desc' => '上传失败');
+		}
+		echo json_encode($result);
+	}
+
+	public function updateproductcategory(){
+		$id = $this->input->post('id');
+		$order = $this->input->post('order');
+		$name = $this->input->post('name');
+		$describe = $this->input->post('describe');
+		$is_index = $this->input->post('is_index');
+		$upload_result = false;
+		if(!empty($_FILES['category_pic']['name'])){
+			$upload_result = $this->model('backmanage_model')->uploadimg('category_pic','product');
+		}
+		$param = array(
+				'order' => $order,
+				'name' => $name,
+				'describe' => $describe,
+				'is_index' => $is_index,
+			);
+		if($upload_result){
+			$param['pic'] = $upload_result;
+		}
+		if($this->model('backmanage_model')->updateproductcategory($id,$param)){
+			$result = array('code' => 1,'desc' => '编辑成功');
+		}else{
+			$result = array('code' => 0,'desc' => '编辑失败');
+		}
+		echo json_encode($result);
+	}
+
+	public function delproductcategory(){
+		$id = $this->input->post('id');
+		$param = array(
+			'is_deleted' => 1,
+			'updated' => time()
+		);
+		if($this->model('backmanage_model')->updateproductcategory($id,$param)){
+			$result = array('code' => 1);
+		}else{
+			$result = array('code' => 0,'desc' => '删除失败');
+		}
+		echo json_encode($result);
 	}
 
 	public function productlist(){
@@ -267,11 +478,16 @@ class backmanage extends Harixon_Controller {
 			$productdetail = $this->model('backmanage_model')->productdetail_id($id);
 		}
 		$productdetail['id'] = $id;
+		$productdetail['category_conf'] = $this->model('backmanage_model')->productcategory_config();
 		$this->backdisplay('productedit',$productdetail);
 	}
 
 	public function addproduct(){
+		$creator = $this->input->post('creator');
+		$version = $this->input->post('version');
+		$published = $this->input->post('published');
 		$title = $this->input->post('title');
+		$type = $this->input->post('type');
 		$content = $this->input->post('content');
 		$benefit = $this->input->post('benefit');
 		$normal = $this->input->post('normal');
@@ -281,7 +497,11 @@ class backmanage extends Harixon_Controller {
 		$normal = str_replace('||++', '"', $normal);
 		$technology = str_replace('||++', '"', $technology);
 		$param = array(
+			'creator' => $creator,
+			'version' => $version,
+			'published' => !empty($published) ? strtotime($published) : 0,
 			'title' => $title,
+			'type' => $type,
 			'content' => $content,
 			'benefit' => $benefit,
 			'normal' => $normal,
@@ -303,7 +523,11 @@ class backmanage extends Harixon_Controller {
 
 	public function updateproduct(){
 		$id = $this->input->post('id');
+		$creator = $this->input->post('creator');
+		$version = $this->input->post('version');
+		$published = $this->input->post('published');
 		$title = $this->input->post('title');
+		$type = $this->input->post('type');
 		$content = $this->input->post('content');
 		$benefit = $this->input->post('benefit');
 		$normal = $this->input->post('normal');
@@ -313,7 +537,11 @@ class backmanage extends Harixon_Controller {
 		$normal = str_replace('||++', '"', $normal);
 		$technology = str_replace('||++', '"', $technology);
 		$param = array(
+			'creator' => $creator,
+			'version' => $version,
+			'published' => !empty($published) ? strtotime($published) : 0,
 			'title' => $title,
+			'type' => $type,
 			'content' => $content,
 			'benefit' => $benefit,
 			'normal' => $normal,
@@ -403,6 +631,42 @@ class backmanage extends Harixon_Controller {
 
 	public function uploadaboutimg(){
 		$upload_result = $this->model('backmanage_model')->uploadimg('upload','about','about_content');
+		if($upload_result){
+			$result = array(
+				'fileName'=>$_FILES['upload']['name'],
+				'uploaded'=>1,
+				'url' => $upload_result
+			);
+		}else{
+			$result = array(
+				'error' => array(
+					'message' => '上传失败'
+				)
+			);
+		}
+		echo json_encode($result);
+	}
+
+	public function uploadprovisionimg(){
+		$upload_result = $this->model('backmanage_model')->uploadimg('upload','provision','provision_content');
+		if($upload_result){
+			$result = array(
+				'fileName'=>$_FILES['upload']['name'],
+				'uploaded'=>1,
+				'url' => $upload_result
+			);
+		}else{
+			$result = array(
+				'error' => array(
+					'message' => '上传失败'
+				)
+			);
+		}
+		echo json_encode($result);
+	}
+
+	public function uploadjoinimg(){
+		$upload_result = $this->model('backmanage_model')->uploadimg('upload','join','join_content');
 		if($upload_result){
 			$result = array(
 				'fileName'=>$_FILES['upload']['name'],

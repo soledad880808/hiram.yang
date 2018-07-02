@@ -174,6 +174,14 @@ iframe {
     color: #104A7C;
     margin-right: 80px;
 }
+.main .main-menu .list-show ul{
+    display: block;
+}
+
+.main .main-menu .list-hide ul{
+    display: none;
+}
+
 .main .main-menu .ja-box-ct{
     margin-right: 40px;
 }
@@ -206,7 +214,7 @@ iframe {
     padding: 30px 0;
 }
 .footer .column{
-    width: 20%;
+    width: 25%;
     text-align: left;
     float: left;
 }

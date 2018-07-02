@@ -15,6 +15,7 @@
 						<th>id</th>
 						<th>标题</th>
 						<th>标题图片</th>
+						<th>类型</th>
 						<th>更新时间</th>
 						<th>创建时间</th>
 						<th>操作</th>
@@ -28,6 +29,7 @@
 							echo '<td>' . $value['id'] . '</td>';
 							echo '<td>' . $value['title'] . '</td>';
 							echo '<td><a href="javascript:void(0)" value="' . $value['title_pic'] . '" class="J-show-titlepic">查看</a></td>';
+							echo '<td>' . $value['typename'] . '</td>';
 							echo '<td>' . date('Y-m-d H:i:s',$value['updated']) . '</td>';
 							echo '<td>' . date('Y-m-d H:i:s',$value['created']) . '</td>';
 							echo '<td><a href="' . base_url('backmanage/productedit?id=' . $value['id']) . '">编辑</a>|<a href="javascript:void(0)" class="J-del" value="' . $value['id'] . '">删除</a>|<a href="' . base_url('backmanage/productfile?id=' . $value['id']) . '" value="' . $value['id'] . '">文件</a></td>';

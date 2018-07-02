@@ -3,7 +3,7 @@
             <?php
                 foreach($productlist as $key => $value){
                     echo '<li><div>';
-                    echo '<a href="' . base_url('product/productdetail?id=' . $value['id']) . '">';
+                    echo '<a href="' . base_url('product/productdetail?type=' . $type . '&id=' . $value['id']) . '">';
                     echo '<img src="' . $value['title_pic'] . '">';
                     echo '<p>' . $value['title'] . '</p>';
                     echo '</a></div></li>';

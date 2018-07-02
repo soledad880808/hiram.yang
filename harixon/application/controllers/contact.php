@@ -18,9 +18,15 @@ class contact extends Harixon_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function contacts()
 	{
 		$contactinfo = $this->model('contact_model')->contactinfo();
 		$this->display('contact',$contactinfo);
+	}
+
+	public function join()
+	{
+		$joininfo = $this->model('contact_model')->joininfo();
+		$this->display('join',$joininfo);
 	}
 }
