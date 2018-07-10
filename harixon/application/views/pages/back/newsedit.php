@@ -29,6 +29,10 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label>作者<em class="text-red">*</em>：</label>
+                    <input id="J-creator" type="text" class="form-control" value="<?php echo !empty($newsdetail) ? $newsdetail['creator'] : '';?>"/>
+                </div>
+                <div class="form-group">
                     <label>发布时间<em class="text-red">*</em>：</label>
                     <input id="J-published" type="text" class="form-control" value="<?php echo !empty($newsdetail['published']) ? date('Y-m-d',$newsdetail['published']) : '';?>"/>
                 </div>
@@ -62,6 +66,7 @@
             title = $('#J-title').val(),
             content = CKEDITOR.instances.editor.getData(),
             type = $('#J-type').val(),
+            creator = $('#J-creator').val(),
             published = $('#J-published').val(),
             url = domain + 'backmanage/changenews';
         var param = {
@@ -69,6 +74,7 @@
             'title':title,
             'content':content,
             'type':type,
+            'creator':creator,
             'published':published
         };
         ajaxRequest(url,param,function(obj){

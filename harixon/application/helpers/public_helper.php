@@ -38,11 +38,13 @@
 		{
 			return '';
 		}
-		parse_str($_SERVER['QUERY_STRING'],$param);
-		unset($param['pageno']);
-		$query_str = http_build_query($param);
-		$base_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?';
-		$totalpage = ceil($total/$pagesize);
+		$request_uri = parse_url($_SERVER['REQUEST_URI']);
+        parse_str($_SERVER['QUERY_STRING'],$param);
+        unset($param['pageno']);
+        $query_str = http_build_query($param);
+        $base_url = 'http://' . $_SERVER['HTTP_HOST'] . $request_uri['path'] . '?';
+        $totalpage = ceil($total/$pagesize);
+
 		if(!empty($query_str))
 		{
 			$base_url .= $query_str;

@@ -243,7 +243,7 @@
 	<img class="code" src="<?php echo base_url();?>img/liantu.png" alt="">
 </body>
 <script type="text/javascript">
-	$(window).load(function () {
+	$(function () {
 		var mySwiper = new Swiper('.banner .swiper-container', {
 			direction: 'horizontal',
 			autoplay: true,

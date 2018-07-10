@@ -54,11 +54,13 @@ class backmanage extends Harixon_Controller {
 		$title = $this->input->post('title');
 		$content = $this->input->post('content');
 		$type = $this->input->post('type');
+		$creator = $this->input->post('creator');
 		$published = $this->input->post('published');
 		$param = array(
 			'title' => $title,
 			'content' => $content,
 			'type' => $type,
+			'creator' => $creator,
 			'published' => strtotime($published . ' 00:00:00')
 		);
 		if(!empty($id)){

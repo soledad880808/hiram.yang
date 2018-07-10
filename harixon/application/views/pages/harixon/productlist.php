@@ -41,8 +41,6 @@
         display: block;
         overflow: hidden;
         font-size: 16px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
         color: #104A7C;
         text-align: center;
     }
