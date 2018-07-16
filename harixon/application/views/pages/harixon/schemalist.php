@@ -1,15 +1,21 @@
         <div class="main-content product-list">
-            <ul>
             <?php
+                $count = 1;
                 foreach($schemalist as $key => $value){
+                    if($count%3 == 1){
+                        echo '<ul class="clearfix">';
+                    }
                     echo '<li><div>';
                     echo '<a href="' . base_url('schema/schemadetail?type=' . $type . '&id=' . $value['id']) . '">';
                     echo '<img src="' . $value['title_pic'] . '">';
                     echo '<p>' . $value['title'] . '</p>';
                     echo '</a></div></li>';
+                    if($count%3 == 0 || $count == count($schemalist)){
+                        echo '</ul>';
+                    }
+                    $count++;
                 }
             ?>
-            </ul>
             <div id="kkpager"></div>
         </div>
     </div>
